@@ -5,7 +5,7 @@ import { UserDashboard } from './user-dashboard'
 export const Header = () => {
   return (
     <header className="mx-[24px] flex justify-between mt-[13px]">
-      <Logo />
+      <Logo/>
       <UserDashboard />
     </header>
   )

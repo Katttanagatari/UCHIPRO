@@ -1,10 +1,8 @@
-import { Header } from "../components/Header";
+import Layout from './layout';
 
 function MainStudentPage() {
   return (
-    <>
-      <Header />
-    </>
+    <Layout></Layout>
   );
 }
 
