@@ -4,17 +4,17 @@ import { ReactComponent as Reference } from '../../../assets/img/Reference.svg'
 
 export const SidebarData = [
     {
-        title: 'MainPage',
+        title: 'Главная',
         path: '/',
         icon: <MainPage />,
     },
     {
-        title: 'Сourses',
+        title: 'Курсы',
         path: '/courses',
         icon: <Сourses />,
     },
     {
-        title: 'Reference',
+        title: 'Справка',
         path: '/reference',
         icon: <Reference />,
     },

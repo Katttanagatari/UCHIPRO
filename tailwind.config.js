@@ -4,16 +4,22 @@ module.exports = {
     "./src/**/*.{js,jsx,ts,tsx}",
   ],
   theme: {
+    fontFamily: {
+      'main': ['SF Pro Display', 'sans-serif'],
+      'rubik': ['Rubik', 'sans-serif'],
+      'inter': ['Inter', 'sans-serif']
+    },
     screens: {
-      'xl': '1685px'
+      'xl': '1685px',
     },
     extend: {
       colors: {
         'bg': '#F2F8FF',
         'primary-blue': '#0A84FF',
         'grey': {
-          1: '#8e8e93',
+          1: '#8E8E93',
           2: '#AEAEB2',
+          4: '#D1D1D6',
           6: "#F8F8F8",
         }
       }

@@ -1,12 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import MainStudentPage from './screens/main-student-page';
+import App from './app';
+
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <MainStudentPage />
+    <App/>
   </React.StrictMode>
 );

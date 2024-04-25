@@ -5,7 +5,7 @@ export const Logo = () => {
   return (
     <div className="flex items-center">
         <LogoIcon className='mr-4'/>
-        <div className="text-primary-blue text-[32px]">УчиПро</div>
+        <div className="text-[32px] font-rubic font-medium text-primary-blue">УчиПро</div>
     </div>
   )
 }
