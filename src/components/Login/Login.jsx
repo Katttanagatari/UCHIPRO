@@ -5,11 +5,11 @@ import { MainButton } from '../UI/MainButton'
 export const Login = () => {
   return (
     <div className="w-[360px] ml-[24px] mt-16 h-full bg-white rounded-[14px] p-8">
-        <div className="w-[103px] text-[24px] font-medium text-grey-4">Вход на платформу</div>
+        <div className="w-[103px] mb-3 text-[24px] font-medium text-grey-4">Вход на платформу</div>
         <Input 
-            label='Логин' 
-            placeholder='Логин' 
-            type='text'
+            label='Почта' 
+            placeholder='Email' 
+            type='email'
         />
         <Input 
             label='Пароль' 

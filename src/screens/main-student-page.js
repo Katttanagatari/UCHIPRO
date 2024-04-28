@@ -1,14 +1,14 @@
-import { Quote } from '../components/Main-Student/Quote';
+import { Quote } from '../components/UI/Quote/Quote';
 import { TodayCourses } from '../components/Main-Student/TodayCourses';
-import { Wrapper } from '../components/Wrapper';
-import { WrapperContent } from '../components/WrapperContent';
+import { Wrapper } from '../components/Wrappers/Wrapper';
+import { WrapperContent } from '../components/Wrappers/WrapperContent';
 import StudentLayout from './student-layout';
 
 function MainStudentPage() {
   return (
       <StudentLayout>
         <Wrapper>
-          <Quote />
+          <Quote purpose={0}/>
             <WrapperContent>
               <TodayCourses />
             </WrapperContent>
