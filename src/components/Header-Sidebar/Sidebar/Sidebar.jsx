@@ -24,7 +24,7 @@ export const Sidebar = () => {
               </div>
             </NavLink>
             {index === 1 && (
-              <div className="border-t-[2px] mx-3"></div>
+              <div className="border-t-[2px] mx-3 opacity-60"></div>
             )}
           </div>
         );

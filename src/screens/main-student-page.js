@@ -8,7 +8,7 @@ function MainStudentPage() {
   return (
       <StudentLayout>
         <Wrapper>
-          <Quote purpose={0}/>
+          <Quote purpose={'student-quote'}/>
             <WrapperContent>
               <TodayCourses />
             </WrapperContent>

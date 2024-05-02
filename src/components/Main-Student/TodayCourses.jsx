@@ -22,7 +22,7 @@ export const TodayCourses = () => {
 
   return (
     <div className="flex">
-        <div className="text-[24px] mr-[5px]">План на день</div>
+        <div className="text-[24px] mr-[5px] font-medium">План на день</div>
         <span className="pb-10 text-grey-2">{formattedDate}</span>
     </div>
   );
