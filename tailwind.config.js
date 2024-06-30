@@ -19,8 +19,9 @@ module.exports = {
         'grey': {
           1: '#8E8E93',
           2: '#AEAEB2',
+          3: '#C7C7CC',
           4: '#D1D1D6',
-          6: "#F8F8F8",
+          6: '#F8F8F8',
         }
       }
     },

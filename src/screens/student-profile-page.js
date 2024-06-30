@@ -2,7 +2,7 @@ import React from 'react'
 import { Wrapper } from '../components/Wrappers/Wrapper';
 import { WrapperContent } from '../components/Wrappers/WrapperContent';
 import { Quote } from '../components/UI/Quote/Quote';
-import StudentLayout from './student-layout';
+import StudentLayout from './layouts/student-layout';
 import { AvatarEmail } from '../components/UI/AvatarEmail';
 
 const StudentProfilePage = () => {
