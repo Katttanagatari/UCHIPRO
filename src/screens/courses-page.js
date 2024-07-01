@@ -8,8 +8,11 @@ return (
   <StudentLayout>
     <WrapperContent>
       <div className="px-3 text-[24px] font-medium">Курсы</div>
-      <div className="flex gap-[24px] mt-[24px]">
+      <div className="flex mt-[24px]">
         <CoursesCards />
+        <div className="w-[274px] bg-white h-full">
+          123
+        </div>
       </div>
     </WrapperContent>
   </StudentLayout>

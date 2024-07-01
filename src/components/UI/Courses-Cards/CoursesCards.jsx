@@ -9,14 +9,14 @@ import { CoursesCardsData } from '../Courses-Cards/CoursesCardsData';
 export const CoursesCards = () => {
 const blogCourses = CoursesCardsData.map((item) => {
 return (
-  <div key={item.id} className='bg-white rounded-[14px] p-[26px] w-[437px]'>
+  <div key={item.id} className='bg-white rounded-[14px] p-[26px] w-[420px]'>
     <div className="flex gap-4">
         {item.tags.map((tags, index) => (
           <div key={index} className="text-[14px] text-primary-blue px-3 py-1 bg-grey-6 w-auto rounded-[9px]">{tags}</div>
       ))}
     </div>
     <div className="mx-3 my-4">
-        <div className="font-medium text-[20px] w-[230px]">{item.title}</div>
+        <div className="font-medium text-[20px] w-[260px] line-clamp-2">{item.title}</div>
         <div className="font-semibold text-[24px] w-[135px]">2023-2024</div>
         <div className="flex">
           <img src={CoursesCalendar} alt=''/>
@@ -27,7 +27,7 @@ return (
       <div className="flex absolute z-0">
         <CoursesBackGroundButton/>
       </div>
-      <div className="mr-[87px] z-10">
+      <div className="mr-[65px] z-10">
         <div className="text-[15px] text-grey-6 text-left">В месяц</div>
         <div className="text-[15px] text-grey-6 text-left font-semibold">от {item.price}₽</div>
       </div>
@@ -54,5 +54,5 @@ return (
   <div className='flex flex-wrap gap-[24px]'>
     {blogCourses}
   </div>
-)
-}
+);
+};
