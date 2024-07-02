@@ -10,7 +10,7 @@ module.exports = {
       'inter': ['Inter', 'sans-serif']
     },
     screens: {
-      'xl': '1685px',
+      'xl': '1880px',
     },
     extend: {
       colors: {
@@ -22,6 +22,7 @@ module.exports = {
           3: '#C7C7CC',
           4: '#D1D1D6',
           6: '#F8F8F8',
+          7: '#A0A0A0',
         }
       }
     },

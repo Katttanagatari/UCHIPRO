@@ -9,7 +9,7 @@ import { CoursesCardsData } from '../Courses-Cards/CoursesCardsData';
 export const CoursesCards = () => {
 const blogCourses = CoursesCardsData.map((item) => {
 return (
-  <div key={item.id} className='bg-white rounded-[14px] p-[26px] w-[420px]'>
+  <div key={item.id} className='bg-white rounded-[14px] p-[26px] w-[520px] xl:w-[420px]'>
     <div className="flex gap-4">
         {item.tags.map((tags, index) => (
           <div key={index} className="text-[14px] text-primary-blue px-3 py-1 bg-grey-6 w-auto rounded-[9px]">{tags}</div>
@@ -27,7 +27,7 @@ return (
       <div className="flex absolute z-0">
         <CoursesBackGroundButton/>
       </div>
-      <div className="mr-[65px] z-10">
+      <div className="xl:mr-[65px] mr-[160px] z-10">
         <div className="text-[15px] text-grey-6 text-left">В месяц</div>
         <div className="text-[15px] text-grey-6 text-left font-semibold">от {item.price}₽</div>
       </div>
@@ -51,7 +51,7 @@ return (
 });
 
 return (
-  <div className='flex flex-wrap gap-[24px]'>
+  <div className='grid grid-cols-2 gap-[24px] xl:grid-cols-3'>
     {blogCourses}
   </div>
 );

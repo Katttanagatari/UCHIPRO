@@ -27,5 +27,32 @@ export const CoursesCardsData = [
         tags: ['Програмирование', 'CSS'],
         price: '4590',
     },
-
-]
+    {
+        id: 5,
+        title: 'Python Prodigy: Mastering Data Science and Machine Learning',
+        date: '01.11.2023',
+        tags: ['Програмирование', 'Python', 'Data Science'],
+        price: '4990',
+    },
+    {
+        id: 6,
+        title: 'UX Unleashed: Designing Intuitive and Engaging User Experiences',
+        date: '01.11.2023',
+        tags: ['Дизайн', 'UX'],
+        price: '3490',
+    },
+    {
+        id: 7,
+        title: 'Cybersecurity Fortress: Protecting Digital Assets and Data',
+        date: '01.11.2023',
+        tags: ['Безопасность', 'Cybersecurity'],
+        price: '5290',
+    },
+    {
+        id: 8,
+        title: 'Blockchain Beyond Basics: Advanced Cryptocurrency and Smart Contracts',
+        date: '01.11.2023',
+        tags: ['Програмирование', 'Blockchain'],
+        price: '5990',
+    },
+];
