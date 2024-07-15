@@ -1,5 +1,5 @@
 import React from 'react'
-import './FilterInputText.css'; // Импортируйте CSS файл
+import './FilterInputText.css';
 
 export const FilterInputText = ({ placeholder, name, value, onChange }) => {
 
@@ -16,5 +16,5 @@ export const FilterInputText = ({ placeholder, name, value, onChange }) => {
         </input>
         <span className='absolute right-[10px] top-1/2 transform -translate-y-1/2 pointer-events-none text-grey-7'>₽</span>
     </div>
-  )
+)
 }

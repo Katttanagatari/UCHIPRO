@@ -4,6 +4,7 @@ export const CoursesCardsData = [
         title: 'Web Wizardry: Advanced Frontend Development Mastery',
         date: '01.11.2023',
         tags: ['Програмирование', 'JavaScript'],
+        value: ["programming", 'javascript'],
         price: '3198',
     },
     {
@@ -11,6 +12,7 @@ export const CoursesCardsData = [
         title: 'Delirum Observatie Screening Schaal Screening',
         date: '01.11.2023',
         tags: ['HTML', 'JavaScript', 'Apex Legends'],
+        value: ["html", 'javascript', 'apex-legends'],
         price: '3990',
     },
     {
