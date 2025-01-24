@@ -1,0 +1,178 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Rubik400;
+}
+
+:root {
+    --main-bg-color: #0A84FF;
+}
+
+@font-face {
+    font-family: 'Rubik300';
+    src: url(font/Rubik.ttf);
+    font-weight: 300;
+}
+
+@font-face {
+    font-family: 'Rubik400';
+    src: url(font/Rubik.ttf);
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: 'Rubik500';
+    src: url(font/Rubik.ttf);
+    font-weight: 500;
+}
+
+@font-face {
+    font-family: 'Rubik600';
+    src: url(font/Rubik.ttf);
+    font-weight: 600;
+}
+
+
+.header {
+    background-color: #ffffff;
+    padding: 16px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #e4e4e4;
+    position: fixed;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.logo {
+    display: flex;
+}
+
+.logo-photo {
+    margin-right: 12px;
+}
+
+.logo-text {
+    font-size: 32px;
+    color: var(--main-bg-color);
+    font-family: Rubik500;
+}
+
+.main__btn {
+    display: flex;
+    align-items: center;
+}
+
+.btn-communication {
+    display: flex;
+    margin-right: 32px;
+    gap: 20px;
+}
+
+.sidebar {
+    padding: 12px;
+    width: 235px;
+    position: fixed;
+    height: 100%;
+    top: 82px; 
+
+}
+
+.sidebar__panel {
+    display: flex;
+    border-radius: 10px;
+    padding: 10px 18px;
+    margin-bottom: 8px;
+}
+
+
+.sidebar__panel-text {
+    font-weight: 500;
+    color: #8E8E93;
+    align-self: center;
+}
+
+.sidebar__panel.active {
+    background-color: #F8F8F8; 
+}
+
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 2px solid #F8F8F8;
+    margin: 8px 0;
+}
+
+.hero {
+    padding-top: 82px;
+    margin-left: 259px;
+    background-color: #f4f7ff;
+    height: calc(100vh - 82px);
+}
+
+.container {
+    padding: 22px;
+}
+
+.hero__info {
+    display: flex;
+    background-color: #ffffff;
+    padding: 24px;
+    border-radius: 14px;
+}
+
+.hero__info-title {
+    color: #000;
+    font-weight: 600;
+    font-size: 24px;
+
+}
+
+.hero__info-text {
+    color: #8E8E93;
+    font-size: 18px;
+    font-weight: 400;
+    width: 800px;
+}
+
+.hero__title {
+    font-weight: 500;
+    font-size: 24px;
+    margin: 0 14px 24px;
+}
+
+.date {
+    margin-top: 22px;
+    margin-left: 14px;
+    font-size: 24px;
+    font-weight: 500;
+}
+
+.date-number {
+    font-size: 14px;
+    position: fixed;
+    margin-left: 5px;
+    color: #AEAEB2;
+}
+
+.hero__cards {
+    background-color: #ffffff;
+    border-radius: 14px;
+    padding: 26px;
+    box-sizing: border-box;
+    width: 100%;
+    
+}
+
+.hero__cards-tags {
+    background-color: #F8F8F8;
+    padding: 10px 12px;
+    border-radius: 9px;
+    font-size: 14px;
+    color: var(--main-bg-color);
+}
+
+
+

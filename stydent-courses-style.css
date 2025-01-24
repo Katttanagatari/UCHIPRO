@@ -1,0 +1,59 @@
+.hero__cards.courses {
+    width: 406px;
+    height: 304px;
+}
+
+.container__cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+
+}
+
+.hero__cards-title {
+    color: #181818;
+    font-weight: 500;
+    font-size: 20px;
+    margin-top: 22px;
+}
+
+.hero__cards-year {
+    color: #181818;
+    font-size: 21px;
+    font-weight: 600;
+    margin-top: 16px;
+}
+
+.hero__cards-date {
+    display: flex;
+    align-items: center;
+    font-weight: 300;
+    color: #C7C7CC;
+}
+
+.hero__cards.btn {
+    background-color: var(--main-bg-color);
+    padding: 14px;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 22px;
+}
+
+.hero__cards__btn-title {
+    color: #F8F8F8;
+    font-weight: 500;
+    font-size: 12px;
+}
+
+.hero__cards__btn-text {
+    color: #F8F8F8;
+    font-weight: 500;
+    font-size: 16px;
+    margin-top: 5px;
+}
+
+.hero__card-input {
+    display: flex;
+    max-width: 106px;
+    box-sizing: border-box;
+}
