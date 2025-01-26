@@ -121,6 +121,7 @@ hr {
     background-color: #ffffff;
     padding: 24px;
     border-radius: 14px;
+    flex-grow: 1;
 }
 
 .hero__info-title {
@@ -134,7 +135,7 @@ hr {
     color: #8E8E93;
     font-size: 18px;
     font-weight: 400;
-    width: 800px;
+    width: 710px;
 }
 
 .hero__title {

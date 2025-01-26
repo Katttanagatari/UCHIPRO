@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Учи Про</title>
+</head>
+<body>
+    <header class="header">
+        <div class="logo">
+            <img src="img/Logo.svg" alt="logo" class="logo-photo">
+            <div class="logo-text">УчиПро</div>
+        </div>
+        <div class="main__btn">
+            <div class="btn-communication">
+                <img src="img/Notifications.svg" alt="Notifications">
+                <img src="img/Messages.svg" alt="Messages">
+                <img src="img/Shop.svg" alt="Shop">
+            </div>
+            <div class="btn-profile">
+                <img src="img/Avatar.png" alt="Avatar">
+            </div>
+        </div>
+    </header>
+
+    <div class="sidebar">
+        <div class="sidebar__panel active">
+            <svg width="24" height="24" style="background-color: #0A84FF;margin-right: 12px;"></svg>
+            <div class="sidebar__panel-text">Главная</div>
+        </div>
+        <div class="sidebar__panel">
+            <svg width="24" height="24" style="background-color: #0A84FF; margin-right: 12px;"></svg>
+            <div class="sidebar__panel-text">Курсы</div>
+        </div>
+        <hr/>
+        <div class="sidebar__panel">
+            <svg width="24" height="24" style="background-color: #0A84FF; margin-right: 12px;"></svg>
+            <div class="sidebar__panel-text" style="color: black;">Справка</div>
+        </div>
+    </div>
+    <div class="hero" style="display: flex; justify-content: center; align-items: center;">
+        <div style="display: flex; flex-direction: column; align-items: center; gap: 16px;">
+            <img src="img/EmptyCart.png" alt="Empty Cart" style="width: 317px; height: 317px;">
+            <div class="hero__cards__btn-text" style="color: #000; margin: 0; justify-content: center; display: flex;">В корзине сейчас пусто</div>
+            <div class="sidebar__panel-text" style="text-align: center; display: flex; max-width: 268px;">Вернитесь обратно во вкладку курсы, чтоб выбрать нужный товар</div>
+            <div class="hero__cards" style="padding: 6px 16px; align-items: center; max-width: 138px; text-align: center; height: 34px; border-radius: 10px; background-color: #0A84FF3F;">
+                <span style="font-size: 13px; color: var(--main-bg-color);">Перейти на курс</span>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
