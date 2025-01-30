@@ -25,14 +25,18 @@
     </header>
 
     <div class="sidebar">
-        <div class="sidebar__panel active">
-            <svg width="24" height="24" style="background-color: #0A84FF;margin-right: 12px;"></svg>
-            <div class="sidebar__panel-text">Главная</div>
-        </div>
-        <div class="sidebar__panel">
-            <svg width="24" height="24" style="background-color: #0A84FF; margin-right: 12px;"></svg>
-            <div class="sidebar__panel-text">Курсы</div>
-        </div>
+        <a href="#" style="text-decoration: none;">
+            <div class="sidebar__panel active">
+                <svg width="24" height="24" style="background-color: #0A84FF;margin-right: 12px;"></svg>
+                <div class="sidebar__panel-text">Главная</div>
+            </div>
+        </a>
+        <a href="student-courses.html" style="text-decoration: none;">
+            <div class="sidebar__panel">
+                <svg width="24" height="24" style="background-color: #0A84FF; margin-right: 12px;"></svg>
+                <div class="sidebar__panel-text">Курсы</div>
+            </div>
+        </a>
         <hr/>
         <div class="sidebar__panel">
             <svg width="24" height="24" style="background-color: #0A84FF; margin-right: 12px;"></svg>
@@ -48,8 +52,18 @@
                     <div class="hero__info-text">Каталог курсов программирования, которые помогут вам освоить основы программирования и получить первые навыки в этой области, а также прокачать продвинутые техники и методологии разработки.</div>
                 </div>
             </div>
-            <div class="date">План на день <span class="date-number">26 октября</span></div>
+            <div class="date">План на день <span class="date-number">8 января</span></div>
         </div>
     </div>
 </body>
+<script>
+    function getcurrentDay() {
+        const date = new Date();
+        const day = date.getDate();
+        const mothn = date.getMonth();
+        const month = date.toLocaleString('ru', {month: 'long'});
+        return `${day} ${month}`;
+    }
+    document.querySelector('.date-number').textContent = getcurrentDay();
+</script>
 </html>

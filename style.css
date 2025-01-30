@@ -2,6 +2,7 @@ body {
     margin: 0;
     padding: 0;
     font-family: Rubik400;
+    background-color: #f4f7ff;
 }
 
 :root {
@@ -75,7 +76,8 @@ body {
     width: 235px;
     position: fixed;
     height: 100%;
-    top: 82px; 
+    top: 82px;
+    background-color: #fff;
 
 }
 
@@ -108,8 +110,6 @@ hr {
 .hero {
     padding-top: 82px;
     margin-left: 259px;
-    background-color: #f4f7ff;
-    height: calc(100vh - 82px);
 }
 
 .container {
