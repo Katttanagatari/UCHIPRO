@@ -8,7 +8,7 @@
     <title>Учи Про</title>
 </head>
 <body>
-    <header class="header">
+    <header class="header" style="z-index: 1;">
         <div class="logo">
             <img src="img/Logo.svg" alt="logo" class="logo-photo">
             <div class="logo-text">УчиПро</div>
@@ -26,10 +26,12 @@
     </header>
 
     <div class="sidebar">
+        <a href="student-page.html" style="text-decoration: none;">
         <div class="sidebar__panel">
             <svg width="24" height="24" style="background-color: #0A84FF;margin-right: 12px;"></svg>
             <div class="sidebar__panel-text">Главная</div>
         </div>
+        </a>
         <div class="sidebar__panel active">
             <svg width="24" height="24" style="background-color: #0A84FF; margin-right: 12px;"></svg>
             <div class="sidebar__panel-text">Курсы</div>
@@ -43,9 +45,9 @@
     <div class="hero">
         <div class="container">
             <div class="hero__title">Курсы</div>
-            <div style="display: flex; justify-content: space-between;">
+            <div style="display: flex; justify-content: space-between; align-items: flex-start;">
                 <div class="container__cards" id="coursesCards"></div>
-            <div class="hero__cards" style="max-width: 274px; position: sticky; top: 100px;">
+            <div class="hero__cards" style="max-width: 274px;  min-height: 250px; position: sticky; top: 100px;">
                 <div class="hero__cards__btn-text" style="color: #8E8E93;">Цена</div>
                 <div style="display: flex; gap: 10px; margin-top: 20px;">
                     <input type="number" class="hero__card-input">
@@ -57,19 +59,10 @@
                     <svg width="6" height="6" style="background-color: #0A84FF; margin-left: 6px; border-radius: 50%"></svg>
                 </div>
                 <input type="" style="width: 100%; height: 36px; box-sizing: border-box;">
-                <div style="display: flex; align-items: center; margin-top: 26px;">
-                    <div class="hero__cards__btn-text" style="color: #8E8E93; font-size: 400; margin: 0;">Направление</div>
-                    <svg width="6" height="6" style="background-color: #0A84FF; margin-left: 6px; border-radius: 50%"></svg>
-                </div>
-                <input type="" style="width: 100%; height: 36px; box-sizing: border-box;">
                 <div class="hero__cards__btn-text" style="color: #8E8E93; margin-top: 26px;">Тематика</div>
-                <div style="margin-top: 24px; display: flex; flex-direction: column; gap: 8px;" id="coursesFiler">
-                    <div style="padding: 6px 0;">
-                        <input type="checkbox" id="1">
-                        <label for="1" class="hero__cards__btn-text" style="color: #8E8E93;">JavaScript</label>
-                    </div>
-                    <div class="hero__cards__btn-text" style="color: #8E8E93; font-size: 400; margin: 0; text-decoration-line: underline; margin-top: 16px;">Еще 4</div>
+                <div style="margin-top: 10px; display: flex; flex-direction: column; gap: 8px;" id="coursesFiler">
                 </div>
+                
             </div>
         </div>
         </div>
@@ -80,67 +73,133 @@
 
 
 <script>
-
     const courses = document.getElementById('coursesCards'); 
     const coursesFilter = document.getElementById('coursesFiler');
 
-    const allTags = COURSES.flatMap(courses => courses.tags);
-    const uniqueTags = [... new Set(allTags)];
-    let idCourses = 0;
-    class StudentCourses {
-    render() {
-        let htmlCourses = '';
-        let htmlCoursesFilter = '';
+    const allTags = COURSES.flatMap(course => course.tags);
+    const uniqueTags = [...new Set(allTags)];
 
-        uniqueTags.forEach((tag) => {
+    class StudentCourses {
+        render() {
+            let htmlCourses = '';
+            let htmlCoursesFilter = '';
+
+            let idCourses = 0;
+            const visibleItemsCount = 4;
+
+            uniqueTags.forEach((tag, index) => {
                 idCourses++;
-                if (!htmlCoursesFilter.includes(tag)) {
-                    htmlCoursesFilter += `
-                        <div style="padding: 6px 0;">
-                            <input type="checkbox" id="${idCourses}">
-                            <label for="${idCourses}" class="hero__cards__btn-text" style="color: #8E8E93;">${tag}</label>
-                        </div>
-                    `;
+                htmlCoursesFilter += `
+                    <div class="filter-item" style="padding: 6px 0; ${index >= visibleItemsCount ? 'display: none' : ''}">
+                        <input type="checkbox" id="tag-${idCourses}" class="tag-filter" data-tag="${tag}">
+                        <label for="tag-${idCourses}" class="hero__cards__btn-text" style="color: #8E8E93;">${tag}</label>
+                    </div>
+                `;
+            });
+
+            if (uniqueTags.length > visibleItemsCount) {
+                htmlCoursesFilter += `
+                    <div id="showMore" style="color: #8E8E93; font-size: 14px; text-decoration: underline; cursor: pointer;">
+                        Еще ${uniqueTags.length - visibleItemsCount}
+                    </div>
+                `;
+            }
+
+            coursesFilter.innerHTML = htmlCoursesFilter;
+
+            const showMore = document.getElementById('showMore');
+            if (showMore) {
+                showMore.addEventListener('click', () => {
+                    const hiddenItems = coursesFilter.querySelectorAll('.filter-item[style*="display: none"]');
+                    if (hiddenItems.length > 0) {
+                        hiddenItems.forEach(item => item.style.display = 'block');
+                        showMore.innerText = 'Скрыть';
+                    } else {
+                        const allItems = coursesFilter.querySelectorAll('.filter-item');
+                        allItems.forEach((item, index) => {
+                            if (index >= visibleItemsCount) {
+                                item.style.display = 'none';
+                            }
+                        });
+                        showMore.innerText = `Еще ${uniqueTags.length - visibleItemsCount}`;
+                    }
+                });
+            }
+
+
+            const checkboxes = document.querySelectorAll('.tag-filter');
+            checkboxes.forEach(checkbox => {
+                checkbox.addEventListener('change', this.filterCourses.bind(this));
+            });
+
+
+            this.renderCourses(COURSES);
+        }
+
+
+        filterCourses() {
+            const selectedTags = [];
+            const checkboxes = document.querySelectorAll('.tag-filter');
+
+            checkboxes.forEach(checkbox => {
+                if (checkbox.checked) {
+                    selectedTags.push(checkbox.dataset.tag);
                 }
             });
 
-        COURSES.forEach(({ id, tags, name, yearFrom, yearTo, date, price }) => {
-            htmlCourses += `
-                <div class="hero__cards courses">
-                    <div style="display: flex; gap: 12px;">
-                        <div class="hero__cards-tags">${tags[0]}</div>
-                        <div class="hero__cards-tags">${tags[1]}</div>
-                    </div>
-                    <div class="hero__cards-title">${name}</div>
-                    <div class="hero__cards-year">${yearFrom} - ${yearTo}</div>
-                    <div style="display: flex; margin-top: 18px;">
-                        <svg width="20" height="18" style="background-color: #0A84FF; margin-right: 8px;"></svg>
-                        <div class="hero__cards-date">с ${date}</div>
-                    </div>
-                    <div class="hero__cards btn">
-                        <div style="display: inline-block;">
-                            <div class="hero__cards__btn-title">В месяц</div>
-                            <div class="hero__cards__btn-text">от ${price} ₽</div>
-                        </div>
-                        <div style="display: flex; gap: 10px;">
-                            <div class="hero_cards" style="width: 54px; height: 42px; background-color: #fff; display: flex; box-sizing: border-box; padding: 10px 16px; justify-content: center; align-items: center; border-radius: 10px;">
-                                <svg width="18.33" height="16.5" style="background-color: #0A84FF;"></svg>
-                            </div>
-                            <div class="hero_cards" style="width: 135px; height: 42px; background-color: #fff; display: flex; box-sizing: border-box; padding: 10px 16px; justify-content: center; align-items: center; border-radius: 10px;">
-                                <svg width="18.33" height="16.5" style="background-color: #0A84FF; margin-right: 10px;"></svg>
-                                <span style="font-size: 15px; font-weight: 500; color: var(--main-bg-color);">В корзину</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            `
-        });
-        courses.innerHTML = htmlCourses;
-        coursesFilter.innerHTML = htmlCoursesFilter;
-    }
-}
+            if (selectedTags.length === 0) {
+                this.renderCourses(COURSES);
+            } else {
+                const filteredCourses = COURSES.filter(course => {
+                    return selectedTags.every(tag => course.tags.includes(tag));
+            });
+            this.renderCourses(filteredCourses);
+        }
+        }
 
-const StudentCoursesPage = new StudentCourses();
-StudentCoursesPage.render();
+
+        renderCourses(coursesToRender) {
+            let htmlCourses = '';
+            coursesToRender.forEach(({ id, tags, name, yearFrom, yearTo, date, price }) => {
+                const tagsHtml = tags.map(tag => `
+                    <div class="hero__cards-tags">${tag}</div>
+                `).join('');
+
+                htmlCourses += `
+                    <div class="hero__cards courses">
+                        <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+                            ${tagsHtml}
+                        </div>
+                        <div class="hero__cards-title">${name}</div>
+                        <div class="hero__cards-year">${yearFrom} - ${yearTo}</div>
+                        <div style="display: flex; margin-top: 18px; margin-bottom: 22px;">
+                            <svg width="20" height="18" style="background-color: #0A84FF; margin-right: 8px;"></svg>
+                            <div class="hero__cards-date">с ${date}</div>
+                        </div>
+                        <div class="hero__cards btn">
+                            <div style="display: inline-block;">
+                                <div class="hero__cards__btn-title">В месяц</div>
+                                <div class="hero__cards__btn-text">от ${price} ₽</div>
+                            </div>
+                            <div style="display: flex; gap: 10px;">
+                                <div class="hero_cards" style="width: 54px; height: 42px; background-color: #fff; display: flex; box-sizing: border-box; padding: 10px 16px; justify-content: center; align-items: center; border-radius: 10px;">
+                                    <svg width="18.33" height="16.5" style="background-color: #0A84FF;"></svg>
+                                </div>
+                                <div class="hero_cards" style="width: 135px; height: 42px; background-color: #fff; display: flex; box-sizing: border-box; padding: 10px 16px; justify-content: center; align-items: center; border-radius: 10px;">
+                                    <svg width="18.33" height="16.5" style="background-color: #0A84FF; margin-right: 10px;"></svg>
+                                    <span style="font-size: 15px; font-weight: 500; color: var(--main-bg-color);">В корзину</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+
+            courses.innerHTML = htmlCourses;
+        }
+    }
+
+    const StudentCoursesPage = new StudentCourses();
+    StudentCoursesPage.render();
 </script>
 </html>

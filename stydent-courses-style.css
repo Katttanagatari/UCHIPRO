@@ -1,13 +1,13 @@
 .hero__cards.courses {
     width: 406px;
-    height: 304px;
+    display: flex;
+    flex-direction: column;
 }
 
 .container__cards {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 24px;
-
 }
 
 .hero__cards-title {
@@ -36,7 +36,7 @@
     padding: 14px;
     display: flex;
     justify-content: space-between;
-    margin-top: 22px;
+    margin-top: auto;
 }
 
 .hero__cards__btn-title {

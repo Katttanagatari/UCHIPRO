@@ -173,6 +173,7 @@ hr {
     border-radius: 9px;
     font-size: 14px;
     color: var(--main-bg-color);
+    white-space: nowrap;
 }
 
 
