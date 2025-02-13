@@ -57,3 +57,25 @@
     max-width: 106px;
     box-sizing: border-box;
 }
+
+.custom-select {
+    margin-top: 10px;
+    appearance: none; 
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-color: #F8F8F8;
+    border: none;
+    border-radius: 5px;
+    padding: 9.5px 12px;
+    font-size: 14px;
+    cursor: pointer;
+    width: 100%;
+    color: #8E8E93;
+}
+
+.custom-select {
+    background-image: url('img/Arrow.svg');
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    padding-right: 12px; 
+}

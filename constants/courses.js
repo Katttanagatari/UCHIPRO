@@ -6,6 +6,7 @@ const COURSES = [
         yearFrom: '2025',
         yearTo: '2026',
         date: '01.11.2023',
+        month: 'november',
         price: '3499',
     },
     {
@@ -15,6 +16,7 @@ const COURSES = [
         yearFrom: '2023',
         yearTo: '2024',
         date: '15.01.2023',
+        month: 'january',
         price: '2799',
     },
     {
@@ -24,6 +26,7 @@ const COURSES = [
         yearFrom: '2024',
         yearTo: '2025',
         date: '10.02.2024',
+        month: 'february',
         price: '4199',
     },
     {
@@ -33,6 +36,7 @@ const COURSES = [
         yearFrom: '2025',
         yearTo: '2026',
         date: '05.03.2025',
+        month: 'march',
         price: '120825',
     },
     {
@@ -42,6 +46,7 @@ const COURSES = [
         yearFrom: '2026',
         yearTo: '2027',
         date: '01.04.2026',
+        month: 'april',
         price: '3899',
     },
     {
@@ -51,6 +56,7 @@ const COURSES = [
         yearFrom: '2024',
         yearTo: '2025',
         date: '20.06.2024',
+        month: 'june',
         price: '4599',
     },
     {
@@ -60,6 +66,7 @@ const COURSES = [
         yearFrom: '2023',
         yearTo: '2024',
         date: '25.08.2023',
+        month: 'august',
         price: '3299',
     },
     {
@@ -69,6 +76,7 @@ const COURSES = [
         yearFrom: '2025',
         yearTo: '2026',
         date: '13.09.2025',
+        month: 'september',
         price: '4999',
     },
     {
@@ -78,6 +86,7 @@ const COURSES = [
         yearFrom: '2024',
         yearTo: '2025',
         date: '03.10.2024',
+        month: 'october',
         price: '2399',
     },
     {
@@ -87,6 +96,7 @@ const COURSES = [
         yearFrom: '2023',
         yearTo: '2024',
         date: '12.11.2023',
+        month: 'november',
         price: '3699',
     },
     {
@@ -96,6 +106,7 @@ const COURSES = [
         yearFrom: '2024',
         yearTo: '2025',
         date: '08.12.2024',
+        month: 'december',
         price: '4299',
     },
     {
@@ -105,6 +116,7 @@ const COURSES = [
         yearFrom: '2025',
         yearTo: '2026',
         date: '22.01.2025',
+        month: 'january',
         price: '2999',
     }
 ];
