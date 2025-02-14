@@ -52,8 +52,8 @@
                 <div class="hero__cards" style="max-width: 274px;  min-height: 250px; position: sticky; top: 100px;">
                     <div class="hero__cards__btn-text" style="color: #8E8E93;">Цена</div>
                     <div style="display: flex; gap: 10px; margin-top: 20px;">
-                        <input type="number" class="hero__card-input">
-                        <input type="number" class="hero__card-input">
+                        <input type="number" class="hero__card-input" id="number-min">
+                        <input type="number" class="hero__card-input" id="number-max">
                     </div>
                     <input type="range" style="width: 100%; margin: 0; margin-top: 20px;">
                     <div style="display: flex; align-items: center; margin-top: 26px;">
@@ -156,8 +156,54 @@
             monthSelect.addEventListener('change', this.filterCourses.bind(this));
 
 
+            const priceInputs = [document.getElementById("number-min"), document.getElementById("number-max")];
+            priceInputs.forEach(input => {
+                input.addEventListener('input', this.filterCourses.bind(this));
+                input.addEventListener('input', validatePrice);
+            });
+
+
             this.renderCourses(COURSES);
+
+            ///
+            document.addEventListener("DOMContentLoaded", () => {
+                setMinMaxPrice();
+
+                document.getElementById("number-min").addEventListener("input", filterCourses);
+                document.getElementById("number-max").addEventListener("input", filterCourses);
+
+            });
+
+
+
+            function setMinMaxPrice() {
+                if (COURSES.length === 0) return;
+
+
+                const prices = COURSES.map(course => parseFloat(course.price));
+                const minPrice = Math.min(...prices);
+                const maxPrice = Math.max(...prices);
+
+
+                document.getElementById("number-min").value = minPrice;
+                document.getElementById("number-max").value = maxPrice;
+            }
+
+
+            function validatePrice() {
+                const minInput = document.getElementById("number-min");
+                const maxInput = document.getElementById("number-max");
+
+                const minPrice = parseFloat(minInput.value);
+                const maxPrice = parseFloat(maxInput.value);
+
+                if (maxPrice < minPrice) {
+                    maxInput.value = minPrice;
+                }
+            }
+
         }
+
 
 
         /////
@@ -171,18 +217,21 @@
                     selectedTags.push(checkbox.dataset.tag);
                 }
             });
-            const selectedMonth = document.getElementById("months").value;
 
-            if (selectedTags.length === 0 && selectedMonth === "all") {
-                this.renderCourses(COURSES);
-                return;
-            }
+            const selectedMonth = document.getElementById("months").value;
+            const minPrice = parseFloat(document.getElementById("number-min").value) || 0;
+            const maxPrice = parseFloat(document.getElementById("number-max").value) || Infinity;
+
+
 
             const filteredCourses = COURSES.filter(course => {
+                const coursePrice = parseFloat(course.price);
+
                 const matchesTags = selectedTags.length === 0 || selectedTags.every(tag => course.tags.includes(tag));
                 const matchesMonth = selectedMonth === "all" || course.month === selectedMonth;
+                const matchesPrice = coursePrice >= minPrice && coursePrice <= maxPrice;
 
-                return matchesTags && matchesMonth; // Должны совпадать и теги, и месяц
+                return matchesTags && matchesMonth && matchesPrice;
             });
 
             this.renderCourses(filteredCourses);
