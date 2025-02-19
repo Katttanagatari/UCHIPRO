@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/stydent-courses-style.css">
+    <title>Учи Про</title>
+</head>
+
+<body>
+    <header class="header" style="z-index: 1;">
+        <div class="logo">
+            <img src="img/Logo.svg" alt="logo" class="logo-photo">
+            <div class="logo-text">УчиПро</div>
+        </div>
+        <div class="main__btn">
+            <div class="btn-communication">
+                <img src="img/Notifications.svg" alt="Notifications">
+                <img src="img/Messages.svg" alt="Messages">
+                <img src="img/Shop.svg" alt="Shop">
+            </div>
+            <div class="btn-profile">
+                <img src="img/Avatar.png" alt="Avatar">
+            </div>
+        </div>
+    </header>
+
+    <div class="sidebar">
+        <a href="student-page.html" style="text-decoration: none;">
+            <div class="sidebar__panel">
+                <svg width="24" height="24" style="background-color: #0A84FF;margin-right: 12px;"></svg>
+                <div class="sidebar__panel-text">Главная</div>
+            </div>
+        </a>
+        <div class="sidebar__panel active">
+            <svg width="24" height="24" style="background-color: #0A84FF; margin-right: 12px;"></svg>
+            <div class="sidebar__panel-text">Курсы</div>
+        </div>
+        <hr />
+        <div class="sidebar__panel">
+            <svg width="24" height="24" style="background-color: #0A84FF; margin-right: 12px;"></svg>
+            <div class="sidebar__panel-text" style="color: black;">Справка</div>
+        </div>
+    </div>
+    <div class="hero">
+        <div class="container">
+            <div class="hero__title">Курсы</div>
+            <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <div class="container__cards" id="coursesCards">
+
+                </div>
+                <div class="hero__cards" style="max-width: 274px;  min-height: 250px; position: sticky; top: 100px;">
+                    <div class="hero__cards__btn-text" style="color: #8E8E93;">Цена</div>
+                    <div style="display: flex; gap: 10px; margin-top: 20px;">
+                        <input type="number" class="hero__card-input" id="number-min">
+                        <input type="number" class="hero__card-input" id="number-max">
+                    </div>
+
+                    <div class="rc-slider">
+                        <div class="rc-slider-rail"></div>
+                        <div class="rc-slider-track" style="left: 25%; width: 50%;"></div>
+                        <div class="rc-slider-handle rc-slider-handle-1" style="left: 25%;"></div>
+                        <div class="rc-slider-handle rc-slider-handle-2" style="left: 75%;"></div>
+                    </div>
+
+                    <div style="display: flex; align-items: center; margin-top: 26px;">
+                        <div class="hero__cards__btn-text" style="color: #8E8E93; font-size: 400; margin: 0;">Месяц
+                        </div>
+                        <svg width="6" height="6"
+                            style="background-color: #0A84FF; margin-left: 6px; border-radius: 50%"></svg>
+                    </div>
+                    <select id="months" name="months" style="width: 100%; height: 36px; box-sizing: border-box;"
+                        class="custom-select">
+                        <option value="all">Выберите месяц</option>
+                        <option value="january">Январь</option>
+                        <option value="february">Февраль</option>
+                        <option value="march">Март</option>
+                        <option value="april">Апрель</option>
+                        <option value="may">Май</option>
+                        <option value="june">Июнь</option>
+                        <option value="july">Июль</option>
+                        <option value="august">Август</option>
+                        <option value="september">Сентябрь</option>
+                        <option value="october">Октябрь</option>
+                        <option value="november">Ноябрь</option>
+                        <option value="december">Декабрь</option>
+                    </select>
+                    <div class="hero__cards__btn-text" style="color: #8E8E93; margin-top: 26px;">Тематика</div>
+                    <div style="margin-top: 10px; display: flex; flex-direction: column; gap: 8px;" id="coursesFiler">
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="constants/courses.js"></script>
+<script src="js/courses-card.js"></script>
+
+</html>

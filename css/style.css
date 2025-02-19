@@ -11,25 +11,25 @@ body {
 
 @font-face {
     font-family: 'Rubik300';
-    src: url(font/Rubik.ttf);
+    src: url(../font/Rubik.ttf);
     font-weight: 300;
 }
 
 @font-face {
     font-family: 'Rubik400';
-    src: url(font/Rubik.ttf);
+    src: url(../font/Rubik.ttf);
     font-weight: 400;
 }
 
 @font-face {
     font-family: 'Rubik500';
-    src: url(font/Rubik.ttf);
+    src: url(../font/Rubik.ttf);
     font-weight: 500;
 }
 
 @font-face {
     font-family: 'Rubik600';
-    src: url(font/Rubik.ttf);
+    src: url(../font/Rubik.ttf);
     font-weight: 600;
 }
 

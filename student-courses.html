@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="stydent-courses-style.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/stydent-courses-style.css">
     <title>Учи Про</title>
 </head>
 
@@ -55,7 +55,14 @@
                         <input type="number" class="hero__card-input" id="number-min">
                         <input type="number" class="hero__card-input" id="number-max">
                     </div>
-                    <input type="range" style="width: 100%; margin: 0; margin-top: 20px;">
+
+                    <div class="rc-slider">
+                        <div class="rc-slider-rail"></div>
+                        <div class="rc-slider-track" style="left: 25%; width: 50%;"></div>
+                        <div class="rc-slider-handle rc-slider-handle-1" style="left: 25%;"></div>
+                        <div class="rc-slider-handle rc-slider-handle-2" style="left: 75%;"></div>
+                    </div>
+
                     <div style="display: flex; align-items: center; margin-top: 26px;">
                         <div class="hero__cards__btn-text" style="color: #8E8E93; font-size: 400; margin: 0;">Месяц
                         </div>
@@ -166,6 +173,7 @@
             this.renderCourses(COURSES);
 
             ///
+
             document.addEventListener("DOMContentLoaded", () => {
                 setMinMaxPrice();
 
@@ -202,8 +210,63 @@
                 }
             }
 
-        }
+            const track = document.querySelector(".rc-slider-track");
+            const handle1 = document.querySelector(".rc-slider-handle-1");
+            const handle2 = document.querySelector(".rc-slider-handle-2");
 
+            const updateTrack = () => {
+                let leftPercent = ((minValue - rangeMin) / (rangeMax - rangeMin)) * 100;
+                let rightPercent = ((maxValue - rangeMin) / (rangeMax - rangeMin)) * 100;
+                track.style.left = leftPercent + "%";
+                track.style.width = (rightPercent - leftPercent) + "%";
+                handle1.style.left = leftPercent + "%";
+                handle2.style.left = rightPercent + "%";
+                minInput.textContent = minValue;
+                maxInput.textContent = maxValue;
+            };
+
+            const dragHandler = (handle, isMin) => {
+                let startX, startValue;
+
+                const onMouseMove = (e) => {
+                    let deltaX = e.clientX - startX;
+                    let percentMoved = deltaX / document.querySelector(".rc-slider").offsetWidth;
+                    let valueMoved = percentMoved * (rangeMax - rangeMin);
+                    let newValue = Math.round(startValue + valueMoved);
+
+                    if (isMin) {
+                        if (newValue >= rangeMin && newValue <= maxValue - 5000) {
+                            minValue = newValue;
+                        }
+                    } else {
+                        if (newValue <= rangeMax && newValue >= minValue + 5000) {
+                            maxValue = newValue;
+                        }
+                    }
+
+                    updateTrack();
+                };
+
+                const onMouseUp = () => {
+                    document.removeEventListener("mousemove", onMouseMove);
+                    document.removeEventListener("mouseup", onMouseUp);
+                };
+
+                handle.addEventListener("mousedown", (e) => {
+                    e.preventDefault(); // Prevents unwanted selection or dragging
+                    startX = e.clientX;
+                    startValue = isMin ? minValue : maxValue;
+                    document.addEventListener("mousemove", onMouseMove);
+                    document.addEventListener("mouseup", onMouseUp);
+                });
+            };
+
+            dragHandler(handle1, true);
+            dragHandler(handle2, false);
+            updateTrack();
+
+
+        }
 
 
         /////
