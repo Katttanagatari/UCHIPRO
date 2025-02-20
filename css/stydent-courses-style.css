@@ -62,6 +62,17 @@
     padding: 6px 0;
 }
 
+.showmore-btn {
+    border: none; 
+    background-color: #fff;
+    font-family: 'Rubik500';
+    cursor: pointer;
+    text-decoration: underline;
+    color: #8E8E93;
+    margin-top: 10px;
+}
+
+
 .custom-select {
     margin-top: 10px;
     appearance: none;

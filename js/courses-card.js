@@ -41,10 +41,19 @@ const postMethods = () => {
 const displayUniqueTags = () => {
     const uniqueTags = [...new Set (COURSES.flatMap(course => course.tags))];
     const tagsContainer = document.getElementById('coursesFiler'); // conteiner for tags
+    const showMoreEl = document.getElementById('showMoreEl');
+    const visibleTagsCount = 4;
+
 
     uniqueTags.forEach((tag, index) => {
         const tagEl = document.createElement('div');
+
         tagEl.classList.add('filter-item');
+
+        if (index >= visibleTagsCount){
+            tagEl.style.display = 'none';
+        }
+
         tagEl.innerHTML = `
             <input type="checkbox" id="tag-${index + 1}" class="tag-filter" data-tag="${tag}">
             <label for="tag-${index + 1}" class="hero__cards__btn-text" style="color: #8E8E93;">${tag}</label>
@@ -53,7 +62,31 @@ const displayUniqueTags = () => {
         tagsContainer.appendChild(tagEl);
     });
 
-    console.log(tagsContainer);
+    if (uniqueTags.length > visibleTagsCount){
+        const showMoreBtn = document.createElement('button');
+        showMoreBtn.classList.add('showmore-btn');
+
+        showMoreBtn.textContent = `Еще ${uniqueTags.length - visibleTagsCount}`
+        showMoreEl.appendChild(showMoreBtn);
+
+        showMoreBtn.addEventListener('click', () => {
+            const hiddenItems = tagsContainer.querySelectorAll('.filter-item[style*="display: none"]');
+            if (hiddenItems.length > 0) {
+                hiddenItems.forEach(item => item.style.display = 'block');
+                showMoreBtn.innerText = 'Скрыть';
+            } else {
+                const allItems = document.querySelectorAll('.filter-item')
+                .forEach((item,index) => {
+                    if (index >= visibleTagsCount){
+                        item.style.display = 'none';
+                        showMoreBtn.textContent = `Еще ${uniqueTags.length - visibleTagsCount}`
+                    }
+                });
+            }
+        })
+    }
+
+
 }
 
 
