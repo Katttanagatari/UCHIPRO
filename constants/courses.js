@@ -37,7 +37,7 @@ const COURSES = [
         yearTo: '2026',
         date: '05.03.2025',
         month: 'march',
-        price: '120825',
+        price: '10000',
     },
     {
         id: 5,

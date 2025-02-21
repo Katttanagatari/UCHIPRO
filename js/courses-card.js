@@ -1,8 +1,28 @@
 
+
+
 // course rendering method
 const postMethods = () => {
     const postContainer = document.getElementById('coursesCards'); // conteiner for courses
-    COURSES.forEach((course) => {
+
+    postContainer.innerHTML = '';
+    const selectedTags = Array.from(document.querySelectorAll('.tag-filter:checked'))
+    .map(tag => tag.dataset.tag);
+
+    const selectedMonth = document.getElementById('months').value;
+
+    const minPriceInput = parseFloat(document.getElementById("minPrice").value) || 0;
+    const maxPriceInput = parseFloat(document.getElementById("maxPrice").value || Infinity);
+
+    const filteredCourses = COURSES.filter(course => {
+        const matchesTags =  selectedTags.length === 0 || selectedTags.every(tag => course.tags.includes(tag));
+        const matchesMonth = selectedMonth === 'all' || course.month === selectedMonth;
+        const matchesPrice = course.price >= minPriceInput && course.price <= maxPriceInput;
+
+        return matchesTags && matchesMonth && matchesPrice;
+    });
+
+    filteredCourses.forEach((course) => {
         const postEl = document.createElement('div');
         postEl.classList.add('hero__cards', 'courses');
 
@@ -37,9 +57,11 @@ const postMethods = () => {
     });
 };
 
+
 // tags rendering method
 const displayUniqueTags = () => {
     const uniqueTags = [...new Set (COURSES.flatMap(course => course.tags))];
+
     const tagsContainer = document.getElementById('coursesFiler'); // conteiner for tags
     const showMoreEl = document.getElementById('showMoreEl');
     const visibleTagsCount = 4;
@@ -54,15 +76,30 @@ const displayUniqueTags = () => {
             tagEl.style.display = 'none';
         }
 
-        tagEl.innerHTML = `
-            <input type="checkbox" id="tag-${index + 1}" class="tag-filter" data-tag="${tag}">
-            <label for="tag-${index + 1}" class="hero__cards__btn-text" style="color: #8E8E93;">${tag}</label>
-        `;
+        const checkbox = document.createElement('input');
+        checkbox.type = 'checkbox';
+        checkbox.id = `tag-${index + 1}`;
+        checkbox.classList.add('tag-filter');
+        checkbox.dataset.tag = tag;
+
+        const label = document.createElement('label');
+        label.htmlFor = checkbox.id;
+        label.classList.add('hero__cards__btn-text');
+        label.style.color = '#8E8E93';
+        label.textContent = tag;
+
+        tagEl.appendChild(checkbox);
+        tagEl.appendChild(label);
 
         tagsContainer.appendChild(tagEl);
+
+        checkbox.addEventListener('change', postMethods);
+        document.getElementById('months').addEventListener('change', postMethods);
+        document.getElementById('minPrice').addEventListener('input', postMethods);
+        document.getElementById('maxPrice').addEventListener('input', postMethods);
     });
 
-    if (uniqueTags.length > visibleTagsCount){
+    if (uniqueTags.length > visibleTagsCount){ //btn show more
         const showMoreBtn = document.createElement('button');
         showMoreBtn.classList.add('showmore-btn');
 
@@ -75,7 +112,7 @@ const displayUniqueTags = () => {
                 hiddenItems.forEach(item => item.style.display = 'block');
                 showMoreBtn.innerText = 'Скрыть';
             } else {
-                const allItems = document.querySelectorAll('.filter-item')
+                document.querySelectorAll('.filter-item')
                 .forEach((item,index) => {
                     if (index >= visibleTagsCount){
                         item.style.display = 'none';
@@ -83,7 +120,7 @@ const displayUniqueTags = () => {
                     }
                 });
             }
-        })
+        });
     }
 
 
@@ -92,6 +129,13 @@ const displayUniqueTags = () => {
 
 
 const initialize = () => {
+    const prices = COURSES.map(course => parseFloat(course.price));
+    const minPrice = Math.min(...prices);
+    const maxPrice = Math.max(...prices);
+    document.getElementById("minPrice").value = minPrice;
+    document.getElementById("maxPrice").value = maxPrice;
+
+
     postMethods();
     displayUniqueTags();
 };
