@@ -1,6 +1,5 @@
 
 
-
 // course rendering method
 const postMethods = () => {
     const postContainer = document.getElementById('coursesCards'); // conteiner for courses
@@ -46,10 +45,12 @@ const postMethods = () => {
                                 <div class="hero_cards" style="width: 54px; height: 42px; background-color: #fff; display: flex; box-sizing: border-box; padding: 10px 16px; justify-content: center; align-items: center; border-radius: 10px;">
                                     <svg width="18.33" height="16.5" style="background-color: #0A84FF;"></svg>
                                 </div>
-                                <div class="hero_cards" style="width: 135px; height: 42px; background-color: #fff; display: flex; box-sizing: border-box; padding: 10px 16px; justify-content: center; align-items: center; border-radius: 10px;">
-                                    <svg width="18.33" height="16.5" style="background-color: #0A84FF; margin-right: 10px;"></svg>
-                                    <span style="font-size: 15px; font-weight: 500; color: var(--main-bg-color);">В корзину</span>
-                                </div>
+                                <button class="clearbtn add-to-cart" data-id="${course.id}>
+                                    <div class="hero_cards" style="width: 135px; height: 42px; background-color: #fff; display: flex; box-sizing: border-box; padding: 10px 16px; justify-content: center; align-items: center; border-radius: 10px;">
+                                        <svg width="18.33" height="16.5" style="background-color: #0A84FF; margin-right: 10px;"></svg>
+                                        <span style="font-size: 15px; font-weight: 500; color: var(--main-bg-color);">В корзину</span>
+                                    </div>
+                                </button>
                             </div>
                     </div>
                 `;
@@ -126,6 +127,42 @@ const displayUniqueTags = () => {
 
 }
 
+const addToCart = (productId) => {
+    const product = COURSES.find(el => el.id === productId);
+    if (!product) return;
+
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    let cartItem = cart.find(item => item.id === productId);
+    if (cartItem) {
+        alert(`Вы уже добавили курс "${product.name}" в корзину!`);
+        return;
+    } else {
+        const price7m = product.price * 7;
+        
+        cart.push({
+            id: product.id,
+            name: product.name, 
+            price: product.price,
+            price7m,
+            tags: product.tags,
+            yearFrom: product.yearFrom,
+            yearTo: product.yearTo,
+            date: product.date
+        });
+    }
+
+    localStorage.setItem("cart", JSON.stringify(cart));
+    alert(`${product.name} добавлен в корзину!`);
+};
+
+document.addEventListener('click', (event) => {
+   if (event.target.classList.contains('add-to-cart')) {
+        const productId = parseInt(event.target.getAttribute("data-id"), 10);
+        addToCart(productId);
+   }
+});
+
+
 
 
 const initialize = () => {
@@ -141,3 +178,5 @@ const initialize = () => {
 };
 
 document.addEventListener('DOMContentLoaded', initialize);
+
+

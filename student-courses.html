@@ -19,7 +19,7 @@
             <div class="btn-communication">
                 <img src="img/Notifications.svg" alt="Notifications">
                 <img src="img/Messages.svg" alt="Messages">
-                <img src="img/Shop.svg" alt="Shop">
+                <a href="student-cart.html"><img src="img/Shop.svg" alt="Shop"></a>
             </div>
             <div class="btn-profile">
                 <img src="img/Avatar.png" alt="Avatar">
@@ -48,12 +48,14 @@
         <div class="container">
             <div class="hero__title">Курсы</div>
             <div style="display: flex; justify-content: space-between; align-items: flex-start;">
-                <div class="container__cards" id="coursesCards"></div>
+                <div class="container__cards" id="coursesCards">
+
+                </div>
                 <div class="hero__cards" style="max-width: 274px;  min-height: 250px; position: sticky; top: 100px;">
                     <div class="hero__cards__btn-text" style="color: #8E8E93;">Цена</div>
                     <div style="display: flex; gap: 10px; margin-top: 20px;">
-                        <input type="number" class="hero__card-input" id="number-min">
-                        <input type="number" class="hero__card-input" id="number-max">
+                        <input type="number" class="hero__card-input" id="minPrice">
+                        <input type="number" class="hero__card-input" id="maxPrice">
                     </div>
 
                     <div class="rc-slider">
@@ -87,263 +89,18 @@
                     </select>
                     <div class="hero__cards__btn-text" style="color: #8E8E93; margin-top: 26px;">Тематика</div>
                     <div style="margin-top: 10px; display: flex; flex-direction: column; gap: 8px;" id="coursesFiler">
-                    </div>
 
+                    </div>
+                    <div id="showMoreEl">
+
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </body>
 <script src="constants/courses.js"></script>
-<script src="components/CoursesCard.js"></script> ///!
+<script src="js/courses-card.js"></script>
 
-
-<script>
-    const courses = document.getElementById('coursesCards');
-    const coursesFilter = document.getElementById('coursesFiler');
-
-    const allTags = COURSES.flatMap(course => course.tags);
-    const uniqueTags = [...new Set(allTags)];
-
-    class StudentCourses {
-        render() {
-            let htmlCourses = '';
-            let htmlCoursesFilter = '';
-
-            let idCourses = 0;
-            const visibleItemsCount = 4;
-
-            uniqueTags.forEach((tag, index) => {
-                idCourses++;
-                htmlCoursesFilter += `
-                    <div class="filter-item" style="padding: 6px 0; ${index >= visibleItemsCount ? 'display: none' : ''}">
-                        <input type="checkbox" id="tag-${idCourses}" class="tag-filter" data-tag="${tag}">
-                        <label for="tag-${idCourses}" class="hero__cards__btn-text" style="color: #8E8E93;">${tag}</label>
-                    </div>
-                `;
-            });
-
-            if (uniqueTags.length > visibleItemsCount) {
-                htmlCoursesFilter += `
-                    <div id="showMore" style="color: #8E8E93; font-size: 14px; text-decoration: underline; cursor: pointer;">
-                        Еще ${uniqueTags.length - visibleItemsCount}
-                    </div>
-                `;
-            }
-
-            coursesFilter.innerHTML = htmlCoursesFilter;
-
-            // Кнопка показать еще n кол во
-            const showMore = document.getElementById('showMore');
-            if (showMore) {
-                showMore.addEventListener('click', () => {
-                    const hiddenItems = coursesFilter.querySelectorAll('.filter-item[style*="display: none"]');
-                    if (hiddenItems.length > 0) {
-                        hiddenItems.forEach(item => item.style.display = 'block');
-                        showMore.innerText = 'Скрыть';
-                    } else {
-                        const allItems = coursesFilter.querySelectorAll('.filter-item');
-                        allItems.forEach((item, index) => {
-                            if (index >= visibleItemsCount) {
-                                item.style.display = 'none';
-                            }
-                        });
-                        showMore.innerText = `Еще ${uniqueTags.length - visibleItemsCount}`;
-                    }
-                });
-            }
-
-
-            const checkboxes = document.querySelectorAll('.tag-filter');
-            checkboxes.forEach(checkbox => {
-                checkbox.addEventListener('change', this.filterCourses.bind(this));
-            });
-
-            const monthSelect = document.getElementById("months");
-            monthSelect.addEventListener('change', this.filterCourses.bind(this));
-
-
-            const priceInputs = [document.getElementById("number-min"), document.getElementById("number-max")];
-            priceInputs.forEach(input => {
-                input.addEventListener('input', this.filterCourses.bind(this));
-                input.addEventListener('input', validatePrice);
-            });
-
-
-            this.renderCourses(COURSES);
-
-            ///
-
-            document.addEventListener("DOMContentLoaded", () => {
-                setMinMaxPrice();
-
-                document.getElementById("number-min").addEventListener("input", filterCourses);
-                document.getElementById("number-max").addEventListener("input", filterCourses);
-
-            });
-
-
-
-            function setMinMaxPrice() {
-                if (COURSES.length === 0) return;
-
-
-                const prices = COURSES.map(course => parseFloat(course.price));
-                const minPrice = Math.min(...prices);
-                const maxPrice = Math.max(...prices);
-
-
-                document.getElementById("number-min").value = minPrice;
-                document.getElementById("number-max").value = maxPrice;
-            }
-
-
-            function validatePrice() {
-                const minInput = document.getElementById("number-min");
-                const maxInput = document.getElementById("number-max");
-
-                const minPrice = parseFloat(minInput.value);
-                const maxPrice = parseFloat(maxInput.value);
-
-                if (maxPrice < minPrice) {
-                    maxInput.value = minPrice;
-                }
-            }
-
-            const track = document.querySelector(".rc-slider-track");
-            const handle1 = document.querySelector(".rc-slider-handle-1");
-            const handle2 = document.querySelector(".rc-slider-handle-2");
-
-            const updateTrack = () => {
-                let leftPercent = ((minValue - rangeMin) / (rangeMax - rangeMin)) * 100;
-                let rightPercent = ((maxValue - rangeMin) / (rangeMax - rangeMin)) * 100;
-                track.style.left = leftPercent + "%";
-                track.style.width = (rightPercent - leftPercent) + "%";
-                handle1.style.left = leftPercent + "%";
-                handle2.style.left = rightPercent + "%";
-                minInput.textContent = minValue;
-                maxInput.textContent = maxValue;
-            };
-
-            const dragHandler = (handle, isMin) => {
-                let startX, startValue;
-
-                const onMouseMove = (e) => {
-                    let deltaX = e.clientX - startX;
-                    let percentMoved = deltaX / document.querySelector(".rc-slider").offsetWidth;
-                    let valueMoved = percentMoved * (rangeMax - rangeMin);
-                    let newValue = Math.round(startValue + valueMoved);
-
-                    if (isMin) {
-                        if (newValue >= rangeMin && newValue <= maxValue - 5000) {
-                            minValue = newValue;
-                        }
-                    } else {
-                        if (newValue <= rangeMax && newValue >= minValue + 5000) {
-                            maxValue = newValue;
-                        }
-                    }
-
-                    updateTrack();
-                };
-
-                const onMouseUp = () => {
-                    document.removeEventListener("mousemove", onMouseMove);
-                    document.removeEventListener("mouseup", onMouseUp);
-                };
-
-                handle.addEventListener("mousedown", (e) => {
-                    e.preventDefault(); // Prevents unwanted selection or dragging
-                    startX = e.clientX;
-                    startValue = isMin ? minValue : maxValue;
-                    document.addEventListener("mousemove", onMouseMove);
-                    document.addEventListener("mouseup", onMouseUp);
-                });
-            };
-
-            dragHandler(handle1, true);
-            dragHandler(handle2, false);
-            updateTrack();
-
-
-        }
-
-
-        /////
-        filterCourses() {
-            const selectedTags = [];
-            const checkboxes = document.querySelectorAll('.tag-filter');
-
-            //все отмеченные теги
-            checkboxes.forEach(checkbox => {
-                if (checkbox.checked) {
-                    selectedTags.push(checkbox.dataset.tag);
-                }
-            });
-
-            const selectedMonth = document.getElementById("months").value;
-            const minPrice = parseFloat(document.getElementById("number-min").value) || 0;
-            const maxPrice = parseFloat(document.getElementById("number-max").value) || Infinity;
-
-
-
-            const filteredCourses = COURSES.filter(course => {
-                const coursePrice = parseFloat(course.price);
-
-                const matchesTags = selectedTags.length === 0 || selectedTags.every(tag => course.tags.includes(tag));
-                const matchesMonth = selectedMonth === "all" || course.month === selectedMonth;
-                const matchesPrice = coursePrice >= minPrice && coursePrice <= maxPrice;
-
-                return matchesTags && matchesMonth && matchesPrice;
-            });
-
-            this.renderCourses(filteredCourses);
-        }
-
-
-        renderCourses(coursesToRender) {
-            let htmlCourses = '';
-            coursesToRender.forEach(({ id, tags, name, yearFrom, yearTo, date, price }) => {
-                const tagsHtml = tags.map(tag => `
-                    <div class="hero__cards-tags">${tag}</div>
-                `).join('');
-
-                htmlCourses += `
-                    <div class="hero__cards courses">
-                        <div style="display: flex; gap: 12px; flex-wrap: wrap;">
-                            ${tagsHtml}
-                        </div>
-                        <div class="hero__cards-title">${name}</div>
-                        <div class="hero__cards-year">${yearFrom} - ${yearTo}</div>
-                        <div style="display: flex; margin-top: 18px; margin-bottom: 22px;">
-                            <svg width="20" height="18" style="background-color: #0A84FF; margin-right: 8px;"></svg>
-                            <div class="hero__cards-date">с ${date}</div>
-                        </div>
-                        <div class="hero__cards btn">
-                            <div style="display: inline-block;">
-                                <div class="hero__cards__btn-title">В месяц</div>
-                                <div class="hero__cards__btn-text">от ${price} ₽</div>
-                            </div>
-                            <div style="display: flex; gap: 10px;">
-                                <div class="hero_cards" style="width: 54px; height: 42px; background-color: #fff; display: flex; box-sizing: border-box; padding: 10px 16px; justify-content: center; align-items: center; border-radius: 10px;">
-                                    <svg width="18.33" height="16.5" style="background-color: #0A84FF;"></svg>
-                                </div>
-                                <div class="hero_cards" style="width: 135px; height: 42px; background-color: #fff; display: flex; box-sizing: border-box; padding: 10px 16px; justify-content: center; align-items: center; border-radius: 10px;">
-                                    <svg width="18.33" height="16.5" style="background-color: #0A84FF; margin-right: 10px;"></svg>
-                                    <span style="font-size: 15px; font-weight: 500; color: var(--main-bg-color);">В корзину</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                `;
-            });
-
-            courses.innerHTML = htmlCourses;
-        }
-    }
-
-    const StudentCoursesPage = new StudentCourses();
-    StudentCoursesPage.render();
-</script>
 
 </html>

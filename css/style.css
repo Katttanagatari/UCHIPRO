@@ -71,6 +71,11 @@ body {
     gap: 20px;
 }
 
+.clearbtn {
+    all: unset;
+    cursor: pointer;
+}
+
 .sidebar {
     padding: 12px;
     width: 235px;

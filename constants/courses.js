@@ -118,5 +118,5 @@ const COURSES = [
         date: '22.01.2025',
         month: 'january',
         price: '2999',
-    }
+    },
 ];
