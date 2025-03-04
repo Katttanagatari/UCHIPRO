@@ -1,0 +1,14 @@
+.hero__hello {
+    display: flex;
+}
+
+.hero__img {
+    margin-right: 12px;
+}
+
+.date-number {
+    font-size: 14px;
+    position: fixed;
+    margin-left: 5px;
+    color: #AEAEB2;
+}

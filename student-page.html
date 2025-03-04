@@ -4,63 +4,75 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/student-page-style.css">
     <title>Учи Про</title>
 </head>
 <body>
     <header class="header">
-        <div class="logo">
-            <img src="img/Logo.svg" alt="logo" class="logo-photo">
-            <div class="logo-text">УчиПро</div>
+        <div class="header__logo">
+            <img src="img/logo.svg" alt="logo" class="header__logo-image">
+            <div class="header__logo-text">УчиПро</div>
         </div>
-        <div class="main__btn">
-            <div class="btn-communication">
-                <img src="img/Notifications.svg" alt="Notifications">
-                <img src="img/Messages.svg" alt="Messages">
-                <img src="img/Shop.svg" alt="Shop">
+        <div class="header__actions">
+            <div class="header__icons">
+                <a href="student-notifications.html">
+                    <img src="img/notifications_btn.svg" alt="Notifications">
+                </a>
+                <a href="student-message.html">
+                    <img src="img/messages_btn.svg" alt="Messages">
+                </a>
+                <a href="student-cart.html">
+                    <img src="img/shop_page_btn.svg" alt="Shop">
+                </a>
             </div>
-            <div class="btn-profile">
-                <img src="img/Avatar.png" alt="Avatar">
+            <div class="header__avatar">
+                <a href="student-personal-account.html">
+                    <img src="img/Avatar.png" alt="Avatar">
+                </a>
             </div>
         </div>
     </header>
 
-    <div class="sidebar">
-        <a href="#" style="text-decoration: none;">
-            <div class="sidebar__panel active">
-                <svg width="24" height="24" style="background-color: #0A84FF;margin-right: 12px;"></svg>
-                <div class="sidebar__panel-text">Главная</div>
+    <aside class="sidebar">
+        <a href="student-page.html" class="sidebar__link">
+            <div class="sidebar__panel" data-active="true">
+                <img src="img/main_page_btn_active.svg" class="sidebar__icon" alt="Main page">
+                <div class="sidebar__text">Главная</div>
             </div>
         </a>
-        <a href="student-courses.html" style="text-decoration: none;">
+        <a href="student-courses.html" class="sidebar__link">
             <div class="sidebar__panel">
-                <svg width="24" height="24" style="background-color: #0A84FF; margin-right: 12px;"></svg>
-                <div class="sidebar__panel-text">Курсы</div>
+                <img src="img/courses_page_btn.svg" class="sidebar__icon" alt="Courses page">
+                <div class="sidebar__text">Курсы</div>
             </div>
         </a>
-        <hr/>
-        <div class="sidebar__panel">
-            <svg width="24" height="24" style="background-color: #0A84FF; margin-right: 12px;"></svg>
-            <div class="sidebar__panel-text" style="color: black;">Справка</div>
-        </div>
-    </div>
+        <hr class="sidebar__divider"/>
+        <a href="student-help.html" class="sidebar__link">
+            <div class="sidebar__panel">
+                <img src="img/help_page_btn.svg" class="sidebar__icon" alt="Help page">
+                <div class="sidebar__text" style="color: black;">Справка</div>
+            </div>
+        </a>
+    </aside>
+
     <div class="hero">
-        <div class="container">
-            <div class="hero__info">
-                <svg width="262" height="142" style="background-color: #0A84FF; margin-right: 12px;"></svg>
+        <div class="hero__container">
+            <div class="hero__layout hero__hello">
+                <img src="img/main_page_hello.svg" class="hero__img" alt="Hello">
                 <div>
-                    <div class="hero__info-title">С нами вы станете сильнее</div>
-                    <div class="hero__info-text">Каталог курсов программирования, которые помогут вам освоить основы программирования и получить первые навыки в этой области, а также прокачать продвинутые техники и методологии разработки.</div>
+                    <div class="hero__title">С нами вы станете сильнее</div>
+                    <div class="hero__description">Каталог курсов программирования, которые помогут вам освоить основы программирования и получить первые навыки в этой области, а также прокачать продвинутые техники и методологии разработки.</div>
                 </div>
             </div>
-            <div class="date">План на день <span class="date-number">8 января</span></div>
+            <div class="info__box">План на день <span class="date-number">8 января</span></div>
         </div>
     </div>
+    
 </body>
 <script>
     function getcurrentDay() {
         const date = new Date();
         const day = date.getDate();
-        const mothn = date.getMonth();
         const month = date.toLocaleString('ru', {month: 'long'});
         return `${day} ${month}`;
     }
