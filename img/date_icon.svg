@@ -1,0 +1,19 @@
+<svg width="24.000000" height="24.000000" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+	<desc>
+			Created with Pixso.
+	</desc>
+	<defs>
+		<clipPath id="clip65_9298">
+			<rect id="Linear / Time / Calendar" rx="4.500000" width="23.000000" height="23.000000" transform="translate(0.500000 0.500000)" fill="white" fill-opacity="0"/>
+		</clipPath>
+	</defs>
+	<g clip-path="url(#clip65_9298)">
+		<path id="Vector" d="M14 4C17.77 4 19.65 4 20.82 5.17C22 6.34 22 8.22 22 12L22 14C22 17.77 22 19.65 20.82 20.82C19.65 22 17.77 22 14 22L10 22C6.22 22 4.34 22 3.17 20.82C2 19.65 2 17.77 2 14L2 12C2 8.22 2 6.34 3.17 5.17C4.34 4 6.22 4 10 4L14 4Z" stroke="#C7C7CC" stroke-opacity="1.000000" stroke-width="1.500000"/>
+		<path id="Vector" d="M7 4L7 2.5" stroke="#C7C7CC" stroke-opacity="1.000000" stroke-width="1.500000" stroke-linecap="round"/>
+		<path id="Vector" d="M17 4L17 2.5" stroke="#C7C7CC" stroke-opacity="1.000000" stroke-width="1.500000" stroke-linecap="round"/>
+		<path id="Vector" d="M2.5 9L21.5 9" stroke="#C7C7CC" stroke-opacity="1.000000" stroke-width="1.500000" stroke-linecap="round"/>
+		<path id="Vector" d="M17 14C17.55 14 18 13.55 18 13C18 12.44 17.55 12 17 12C16.44 12 16 12.44 16 13C16 13.55 16.44 14 17 14ZM17 18C17.55 18 18 17.55 18 17C18 16.44 17.55 16 17 16C16.44 16 16 16.44 16 17C16 17.55 16.44 18 17 18Z" fill="#C7C7CC" fill-opacity="1.000000" fill-rule="evenodd"/>
+		<path id="Vector" d="M12 14C12.55 14 13 13.55 13 13C13 12.44 12.55 12 12 12C11.44 12 11 12.44 11 13C11 13.55 11.44 14 12 14ZM12 18C12.55 18 13 17.55 13 17C13 16.44 12.55 16 12 16C11.44 16 11 16.44 11 17C11 17.55 11.44 18 12 18Z" fill="#C7C7CC" fill-opacity="1.000000" fill-rule="evenodd"/>
+		<path id="Vector" d="M7 14C7.55 14 8 13.55 8 13C8 12.44 7.55 12 7 12C6.44 12 6 12.44 6 13C6 13.55 6.44 14 7 14ZM7 18C7.55 18 8 17.55 8 17C8 16.44 7.55 16 7 16C6.44 16 6 16.44 6 17C6 17.55 6.44 18 7 18Z" fill="#C7C7CC" fill-opacity="1.000000" fill-rule="evenodd"/>
+	</g>
+</svg>

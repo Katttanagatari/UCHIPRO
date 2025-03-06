@@ -10,69 +10,76 @@
 </head>
 
 <body>
-    <header class="header" style="z-index: 1;">
-        <div class="logo">
-            <img src="img/Logo.svg" alt="logo" class="logo-photo">
-            <div class="logo-text">УчиПро</div>
+
+    <header class="header">
+        <div class="header__logo">
+            <img src="img/logo.svg" alt="logo" class="header__logo-image">
+            <div class="header__logo-text">УчиПро</div>
         </div>
-        <div class="main__btn">
-            <div class="btn-communication">
-                <img src="img/Notifications.svg" alt="Notifications">
-                <img src="img/Messages.svg" alt="Messages">
-                <a href="student-cart.html"><img src="img/Shop.svg" alt="Shop"></a>
+        <div class="header__actions">
+            <div class="header__icons">
+                <a href="student-notifications.html">
+                    <img src="img/notifications_btn.svg" alt="Notifications">
+                </a>
+                <a href="student-message.html">
+                    <img src="img/messages_btn.svg" alt="Messages">
+                </a>
+                <a href="student-cart.html">
+                    <img src="img/shop_page_btn.svg" alt="Shop">
+                </a>
             </div>
-            <div class="btn-profile">
-                <img src="img/Avatar.png" alt="Avatar">
+            <div class="header__avatar">
+                <a href="student-personal-account.html">
+                    <img src="img/Avatar.png" alt="Avatar">
+                </a>
             </div>
         </div>
     </header>
 
-    <div class="sidebar">
-        <a href="student-page.html" style="text-decoration: none;">
-            <div class="sidebar__panel">
-                <svg width="24" height="24" style="background-color: #0A84FF;margin-right: 12px;"></svg>
-                <div class="sidebar__panel-text">Главная</div>
+    <aside class="sidebar">
+        <a href="student-page.html" class="sidebar__link">
+            <div class="sidebar__panel" data-active="false">
+                <img src="img/main_page_btn_active.svg" class="sidebar__icon" alt="Main page">
+                <div class="sidebar__text">Главная</div>
             </div>
         </a>
-        <div class="sidebar__panel active">
-            <svg width="24" height="24" style="background-color: #0A84FF; margin-right: 12px;"></svg>
-            <div class="sidebar__panel-text">Курсы</div>
-        </div>
-        <hr />
-        <div class="sidebar__panel">
-            <svg width="24" height="24" style="background-color: #0A84FF; margin-right: 12px;"></svg>
-            <div class="sidebar__panel-text" style="color: black;">Справка</div>
-        </div>
-    </div>
-    <div class="hero">
-        <div class="container">
-            <div class="hero__title">Курсы</div>
-            <div style="display: flex; justify-content: space-between; align-items: flex-start;">
-                <div class="container__cards" id="coursesCards">
+        <a href="student-courses.html" class="sidebar__link">
+            <div class="sidebar__panel" data-active="true">
+                <img src="img/courses_page_btn.svg" class="sidebar__icon" alt="Courses page">
+                <div class="sidebar__text">Курсы</div>
+            </div>
+        </a>
+        <hr class="sidebar__divider"/>
+        <a href="student-help.html" class="sidebar__link">
+            <div class="sidebar__panel" data-active="false">
+                <img src="img/help_page_btn.svg" class="sidebar__icon" alt="Help page">
+                <div class="sidebar__text" style="color: black;">Справка</div>
+            </div>
+        </a>
+    </aside>
 
-                </div>
-                <div class="hero__cards" style="max-width: 274px;  min-height: 250px; position: sticky; top: 100px;">
-                    <div class="hero__cards__btn-text" style="color: #8E8E93;">Цена</div>
-                    <div style="display: flex; gap: 10px; margin-top: 20px;">
-                        <input type="number" class="hero__card-input" id="minPrice">
+    <div class="hero">
+        <div class="hero__container">
+            <div class="hero__title">Курсы</div>
+            <div class="hero__content">
+                <div class="hero__cards-container" id="coursesCards"> </div>
+                <div class="hero__layout hero__cards filter__section">
+                    <div class="filter__label">Цена</div>
+                    <div class="filter__inputs">
+                        <input type="number" class="hero__card-input" id="minPrice"> <!-- надо обязательно поменять потом class-->
                         <input type="number" class="hero__card-input" id="maxPrice">
                     </div>
-
-                    <div class="rc-slider">
-                        <div class="rc-slider-rail"></div>
-                        <div class="rc-slider-track" style="left: 25%; width: 50%;"></div>
-                        <div class="rc-slider-handle rc-slider-handle-1" style="left: 25%;"></div>
-                        <div class="rc-slider-handle rc-slider-handle-2" style="left: 75%;"></div>
+                    <div class="filter__slider">
+                        <div class="filter__slider-rail"></div>
+                        <div class="filter__slider-track" style="left: 25%; width: 50%;"></div>
+                        <div class="filter__slider-handle filter__slider-handle-1" style="left: 25%;"></div>
+                        <div class="filter__slider-handle filter__slider-handle-2" style="left: 75%;"></div>
                     </div>
-
-                    <div style="display: flex; align-items: center; margin-top: 26px;">
-                        <div class="hero__cards__btn-text" style="color: #8E8E93; font-size: 400; margin: 0;">Месяц
-                        </div>
-                        <svg width="6" height="6"
-                            style="background-color: #0A84FF; margin-left: 6px; border-radius: 50%"></svg>
+                    <div class="filter__point">
+                        <div class="filter__label label__text">Месяц</div>
+                        <svg class="label__icon"></svg>
                     </div>
-                    <select id="months" name="months" style="width: 100%; height: 36px; box-sizing: border-box;"
-                        class="custom-select">
+                    <select id="months" name="months" class="filter__select">
                         <option value="all">Выберите месяц</option>
                         <option value="january">Январь</option>
                         <option value="february">Февраль</option>
@@ -87,13 +94,9 @@
                         <option value="november">Ноябрь</option>
                         <option value="december">Декабрь</option>
                     </select>
-                    <div class="hero__cards__btn-text" style="color: #8E8E93; margin-top: 26px;">Тематика</div>
-                    <div style="margin-top: 10px; display: flex; flex-direction: column; gap: 8px;" id="coursesFiler">
-
-                    </div>
-                    <div id="showMoreEl">
-
-                    </div>
+                    <div class="filter__label label__text" style="margin-top: 26px;">Тематика</div>
+                    <div class="filter__categories" id="coursesFiler"> </div>
+                    <div id="showMoreEl"> </div>
                 </div>
             </div>
         </div>
@@ -101,6 +104,4 @@
 </body>
 <script src="constants/courses.js"></script>
 <script src="js/courses-card.js"></script>
-
-
 </html>

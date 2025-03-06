@@ -23,35 +23,35 @@ const postMethods = () => {
 
     filteredCourses.forEach((course) => {
         const postEl = document.createElement('div');
-        postEl.classList.add('hero__cards', 'courses');
+        postEl.classList.add('hero__layout', 'course');
 
-        const postTags = course.tags.map(tag => `<span class="hero__cards-tags">${tag}</span>`).join('');
+        const postTags = course.tags.map(tag => `<span class="course__tag-text">${tag}</span>`).join('');
         postEl.innerHTML = `
-                    <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+                    <div class="course__tag">
                             ${postTags}
+                    </div>
+                    <div class="course__title">${course.name}</div>
+                    <div class="course__duration">${course.yearFrom} - ${course.yearTo}</div>
+                    <div class="course__date">
+                        <img class="course__date-icon" src="../img/date_icon.svg" />
+                        <div class="course__date-text">с ${course.date}</div>
+                    </div>
+                    <div class="hero__layout course__footer">
+                        <div style="display: inline-block;" class="course__price">
+                            <div class="course__price-label">В месяц</div>
+                            <div class="course__price-value">от ${course.price} ₽</div>
                         </div>
-                        <div class="hero__cards-title">${course.name}</div>
-                        <div class="hero__cards-year">${course.yearFrom} - ${course.yearTo}</div>
-                        <div style="display: flex; margin-top: 18px; margin-bottom: 22px;">
-                            <svg width="20" height="18" style="background-color: #0A84FF; margin-right: 8px;"></svg>
-                            <div class="hero__cards-date">с ${course.date}</div>
-                        </div>
-                        <div class="hero__cards btn">
-                            <div style="display: inline-block;">
-                                <div class="hero__cards__btn-title">В месяц</div>
-                                <div class="hero__cards__btn-text">от ${course.price} ₽</div>
+                        <div class="course__actions">
+                            <div class="hero__layout course__favorite">
+                                <img class="course__favorite-icon" src="../img/courses_like.svg" />
                             </div>
-                            <div style="display: flex; gap: 10px;">
-                                <div class="hero_cards" style="width: 54px; height: 42px; background-color: #fff; display: flex; box-sizing: border-box; padding: 10px 16px; justify-content: center; align-items: center; border-radius: 10px;">
-                                    <svg width="18.33" height="16.5" style="background-color: #0A84FF;"></svg>
+                            <button class="clearbtn add-to-cart" data-id="${course.id}>
+                                <div class="hero_cards " style="width: 135px; height: 42px; background-color: #fff; display: flex; box-sizing: border-box; padding: 10px 16px; justify-content: center; align-items: center; border-radius: 10px;">
+                                    <svg width="18.33" height="16.5" style="background-color: #0A84FF; margin-right: 10px;"></svg>
+                                    <span style="font-size: 15px; color: var(--main-bg-color);">В корзину</span>
                                 </div>
-                                <button class="clearbtn add-to-cart" data-id="${course.id}>
-                                    <div class="hero_cards" style="width: 135px; height: 42px; background-color: #fff; display: flex; box-sizing: border-box; padding: 10px 16px; justify-content: center; align-items: center; border-radius: 10px;">
-                                        <svg width="18.33" height="16.5" style="background-color: #0A84FF; margin-right: 10px;"></svg>
-                                        <span style="font-size: 15px; font-weight: 500; color: var(--main-bg-color);">В корзину</span>
-                                    </div>
-                                </button>
-                            </div>
+                            </button>
+                        </div>
                     </div>
                 `;
         postContainer.appendChild(postEl);

@@ -1,3 +1,10 @@
+html {
+    box-sizing: border-box;
+}
+  *, *:before, *:after {
+    box-sizing: inherit;
+}
+
 body {
     margin: 0;
     padding: 0;
@@ -16,7 +23,7 @@ body {
 }
 
 /*
-    HEADER
+    HEADER SECTION
 */
 .header {
     background-color: #ffffff;
@@ -28,6 +35,7 @@ body {
     position: fixed;
     width: 100%;
     box-sizing: border-box;
+    z-index: 1;
 }
 
 .header__logo {
@@ -61,7 +69,7 @@ body {
 }
 
 /*
-    SIDEBAR
+    SIDEBAR SECTION
 */
 
 .sidebar {
@@ -90,7 +98,6 @@ body {
     height: 24px;
 }
 
-
 .sidebar__text {
     font-weight: 400;
     color: #8E8E93;
@@ -110,7 +117,7 @@ body {
 }
 
 /*
-    HERO
+    HERO SECTION
 */
 
 .hero {
@@ -149,30 +156,5 @@ body {
     margin-left: 14px;
     font-size: 24px;
 }
-
-
-
-
-
-
-
-.hero__cards {
-    background-color: #ffffff;
-    border-radius: 14px;
-    padding: 26px;
-    box-sizing: border-box;
-    width: 100%;
-    
-}
-
-.hero__cards-tags {
-    background-color: #F8F8F8;
-    padding: 10px 12px;
-    border-radius: 9px;
-    font-size: 14px;
-    color: var(--main-bg-color);
-    white-space: nowrap;
-}
-
 
 
