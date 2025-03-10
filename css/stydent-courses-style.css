@@ -128,7 +128,6 @@
 .filter__more {
     border: none; 
     background-color: #fff;
-    font-family: 'Rubik500';
     cursor: pointer;
     text-decoration: underline;
     color: #8E8E93;
@@ -222,24 +221,21 @@
 .course__actions {
     display: flex; 
     gap: 10px;
+    height: 42px;
 }
 
-.course__favorite {
-    width: 54px;
-    height: 42px; 
-    display: flex; 
-    padding: 10px 16px; 
-    justify-content: center; 
-    align-items: center; 
-    border-radius: 10px;
-}
-
-.course__favorite-icon {
-    width: 18.33; 
-    height: 16.5;
+.course__cart-icon {
+    margin-right: 12px;
+    height: 22px;
+    width: 22px;
 }
 
 
+
+
+
+
+/* INPUT (CHANGE LATER!!!!) */
 .hero__card-input {
     display: flex;
     max-width: 106px;

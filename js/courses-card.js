@@ -42,12 +42,14 @@ const postMethods = () => {
                             <div class="course__price-value">от ${course.price} ₽</div>
                         </div>
                         <div class="course__actions">
-                            <div class="hero__layout course__favorite">
-                                <img class="course__favorite-icon" src="../img/courses_like.svg" />
-                            </div>
-                            <button class="clearbtn add-to-cart" data-id="${course.id}>
-                                <div class="hero_cards " style="width: 135px; height: 42px; background-color: #fff; display: flex; box-sizing: border-box; padding: 10px 16px; justify-content: center; align-items: center; border-radius: 10px;">
-                                    <svg width="18.33" height="16.5" style="background-color: #0A84FF; margin-right: 10px;"></svg>
+                            <button class="clearbtn">
+                                <div class="hero__layout main__btn course__favorite">
+                                    <img class="course__favorite-icon" src="../img/courses_like.svg" />
+                                </div>
+                            </button>
+                            <button class="clearbtn add-to-cart" data-id="${course.id}">
+                                <div class="hero__layout main__btn">
+                                    <img src="../img/cart_icon.svg" alt="cart" class="course__cart-icon"/>
                                     <span style="font-size: 15px; color: var(--main-bg-color);">В корзину</span>
                                 </div>
                             </button>
@@ -102,7 +104,7 @@ const displayUniqueTags = () => {
 
     if (uniqueTags.length > visibleTagsCount){ //btn show more
         const showMoreBtn = document.createElement('button');
-        showMoreBtn.classList.add('showmore-btn');
+        showMoreBtn.classList.add('filter__more');
 
         showMoreBtn.textContent = `Еще ${uniqueTags.length - visibleTagsCount}`
         showMoreEl.appendChild(showMoreBtn);
@@ -156,10 +158,11 @@ const addToCart = (productId) => {
 };
 
 document.addEventListener('click', (event) => {
-   if (event.target.classList.contains('add-to-cart')) {
-        const productId = parseInt(event.target.getAttribute("data-id"), 10);
-        addToCart(productId);
-   }
+   const btn = event.target.closest('.add-to-cart');
+   if (!btn) return;
+
+   const productId = parseInt(btn.getAttribute("data-id"), 10);
+   addToCart(productId);
 });
 
 

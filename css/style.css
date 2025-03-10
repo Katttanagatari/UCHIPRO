@@ -157,4 +157,11 @@ body {
     font-size: 24px;
 }
 
+.main__btn {
+    display: flex; 
+    padding: 10px 16px; 
+    justify-content: center; 
+    align-items: center; 
+    border-radius: 10px;
+}
 
