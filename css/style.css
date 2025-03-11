@@ -22,9 +22,28 @@ body {
     font-weight: 300, 400, 500, 600;
 }
 
+.clearbtn {
+    all: unset;
+    cursor: pointer;
+}
+
+.flex {
+    display: flex;
+}
+
+.course__tag-text {
+    background-color: #F8F8F8;
+    padding: 10px 12px;
+    border-radius: 9px;
+    font-size: 14px;
+    color: var(--main-bg-color);
+    white-space: nowrap;
+}
+
 /*
     HEADER SECTION
 */
+
 .header {
     background-color: #ffffff;
     padding: 16px 24px;
@@ -61,11 +80,6 @@ body {
     display: flex;
     margin-right: 32px;
     gap: 20px;
-}
-
-.clearbtn {
-    all: unset;
-    cursor: pointer;
 }
 
 /*
@@ -122,7 +136,7 @@ body {
 
 .hero {
     padding-top: 82px;
-    margin-left: 259px;
+    margin-left: 235px;
 }
 
 .hero__container {

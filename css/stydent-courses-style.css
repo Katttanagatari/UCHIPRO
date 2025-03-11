@@ -146,15 +146,6 @@
     padding: 26px;
 }
 
-.course__tag-text {
-    background-color: #F8F8F8;
-    padding: 10px 12px;
-    border-radius: 9px;
-    font-size: 14px;
-    color: var(--main-bg-color);
-    white-space: nowrap;
-}
-
 .course__tag {
     display: flex;
     gap: 12px;

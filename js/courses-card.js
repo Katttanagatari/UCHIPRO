@@ -157,7 +157,7 @@ const addToCart = (productId) => {
     alert(`${product.name} добавлен в корзину!`);
 };
 
-document.addEventListener('click', (event) => {
+document.addEventListener('click', (event) => { // add to cart on click
    const btn = event.target.closest('.add-to-cart');
    if (!btn) return;
 

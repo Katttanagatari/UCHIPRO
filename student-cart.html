@@ -4,45 +4,64 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/stydent-cart-style.css">
     <title>Учи Про</title>
 </head>
 <body>
     <header class="header">
-        <div class="logo">
-            <img src="img/Logo.svg" alt="logo" class="logo-photo">
-            <div class="logo-text">УчиПро</div>
+        <div class="header__logo">
+            <img src="img/logo.svg" alt="logo" class="header__logo-image">
+            <div class="header__logo-text">УчиПро</div>
         </div>
-        <div class="main__btn">
-            <div class="btn-communication">
-                <img src="img/Notifications.svg" alt="Notifications">
-                <img src="img/Messages.svg" alt="Messages">
-                <img src="img/Shop.svg" alt="Shop">
+        <div class="header__actions">
+            <div class="header__icons">
+                <a href="student-notifications.html">
+                    <img src="img/notifications_btn.svg" alt="Notifications">
+                </a>
+                <a href="student-message.html">
+                    <img src="img/messages_btn.svg" alt="Messages">
+                </a>
+                <a href="student-cart.html">
+                    <img src="img/shop_page_btn.svg" alt="Shop">
+                </a>
             </div>
-            <div class="btn-profile">
-                <img src="img/Avatar.png" alt="Avatar">
+            <div class="header__avatar">
+                <a href="student-personal-account.html">
+                    <img src="img/Avatar.png" alt="Avatar">
+                </a>
             </div>
         </div>
     </header>
 
-    <div class="sidebar">
-        <div class="sidebar__panel">
-            <svg width="24" height="24" style="background-color: #0A84FF;margin-right: 12px;"></svg>
-            <div class="sidebar__panel-text">Главная</div>
-        </div>
-        <div class="sidebar__panel">
-            <svg width="24" height="24" style="background-color: #0A84FF; margin-right: 12px;"></svg>
-            <div class="sidebar__panel-text">Курсы</div>
-        </div>
-        <hr/>
-        <div class="sidebar__panel">
-            <svg width="24" height="24" style="background-color: #0A84FF; margin-right: 12px;"></svg>
-            <div class="sidebar__panel-text" style="color: black;">Справка</div>
-        </div>
-    </div>
+    <aside class="sidebar">
+        <a href="student-page.html" class="sidebar__link">
+            <div class="sidebar__panel" data-active="false">
+                <img src="img/main_page_btn_active.svg" class="sidebar__icon" alt="Main page">
+                <div class="sidebar__text">Главная</div>
+            </div>
+        </a>
+        <a href="student-courses.html" class="sidebar__link">
+            <div class="sidebar__panel" data-active="false">
+                <img src="img/courses_page_btn.svg" class="sidebar__icon" alt="Courses page">
+                <div class="sidebar__text">Курсы</div>
+            </div>
+        </a>
+        <hr class="sidebar__divider"/>
+        <a href="student-help.html" class="sidebar__link">
+            <div class="sidebar__panel" data-active="false">
+                <img src="img/help_page_btn.svg" class="sidebar__icon" alt="Help page">
+                <div class="sidebar__text" style="color: black;">Справка</div>
+            </div>
+        </a>
+
+    </aside>
+
     <div class="hero">
-        <div class="container">
-            <div class="cart-container" id="student-cart" style="display: flex; gap: 12px; justify-content: space-between; flex-direction: column;"></div>
-            
+        <div class="hero__container">
+            <div class="hero__cart-container">
+                <div class="hero__carts" id="student-cart"> </div>
+                <div id="payment-methods"> </div>
+            </div>
         </div>
     </div>
 </body>
