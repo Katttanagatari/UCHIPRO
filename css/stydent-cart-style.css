@@ -38,12 +38,12 @@
 }
 
 .hero__name {
-    font-size: 20px;
+    font-size: 17px;
     color: var(--main-bg-color)
 }
 
 .hero__years {
-    font-size: 16px;
+    font-size: 13px;
     color: var(--main-bg-color);
     margin-top: 9px;
 }
@@ -56,6 +56,67 @@
     display: flex;
     gap: 12px;
 }
+
+.hero__pay {
+    width: 187px;
+    background-color: #F8F8F8; 
+    padding: 16px 24px;
+}
+
+.hero__option {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.hero__option-title {
+    font-size: 14px;
+    color: var(--main-bg-color);
+}
+
+.hero__option-price {
+    font-size: 18px;
+    color: var(--main-bg-color); 
+    text-align: center; 
+    margin-top: 12px;
+}
+
+/*
+    PAYMENT SECTION
+*/
+
+.payment__header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.payment__label {
+    font-size: 24px;
+    color: var(--main-bg-color);
+}
+
+.payment__amount {
+    font-size: 24px;
+}
+
+.payment__details {
+    display: flex;
+    justify-content: space-between; 
+    margin-top: 24px;
+}
+
+.payment__courses {
+    font-size: 16px;
+    color: #333333;
+}
+
+.payment__amount {
+    
+}
+
+
+
 
 /*
     EMPTY CART SECTION
@@ -100,3 +161,6 @@
     font-size: 18px;
     color: var(--main-bg-color);
 }
+
+
+

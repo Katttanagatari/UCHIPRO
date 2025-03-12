@@ -1,9 +1,13 @@
 
 const postMethods = () => {
+    const container = document.querySelector(".hero__cart-container");
     const cartContainer = document.getElementById("student-cart");
     const paymentContainer = document.getElementById("payment-methods");
+    const cartOverAll = document.getElementById("cart-count");
+
     cartContainer.innerHTML = "";
     paymentContainer.innerHTML = "";
+    let count = 0;
 
     let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
@@ -23,8 +27,10 @@ const postMethods = () => {
         `;
         return;
     } cart.forEach(item => {
+        count++;
        // const cartItem = document.createElement("div");
         const postTags = item.tags.map(tag => `<span class="course__tag-text">${tag}</span>`).join('');
+        container.style.height = "auto";
         cartContainer.innerHTML += `
             <div class="hero__layout hero__cart">
                 <div class="flex">
@@ -34,26 +40,26 @@ const postMethods = () => {
                     </div>
                     <div class="hero__content">
                         <div class="hero__name">${item.name}</div>
-                        <div class="hero__years" style="font-size: 13px; color: var(--main-bg-color); margin-top: 9px;">${item.yearFrom + ' - '+ item.yearTo}</div>
+                        <div class="hero__years">${item.yearFrom + ' - '+ item.yearTo}</div>
                         <div class="hero__tags">
                             <div class="hero__tag">${postTags}</div>
                         </div>
                     </div>
                 </div>
-                <div style=" display: flex; gap: 12px;">
-                    <div class="hero__cards" style="width: 187px; background-color: #F8F8F8; padding: 16px 24px;">
-                        <div style="display: flex; align-items: center; justify-content: center; margin-top: 10px;">
+                <div class="hero__tag">
+                    <div class="hero__layout hero__pay">
+                        <label class="hero__option">
                             <input type="radio" name="payment-${item.id}" style="margin: 0 8px 0 0;">
-                            <div style="font-size: 14px; color: var(--main-bg-color);">Оплата за 1/мес</div>
-                        </div>
-                        <div style="font-size: 18px; color: var(--main-bg-color); text-align: center; margin-top: 12px;">${item.price} ₽</div>
+                            <span class="hero__option-title">Оплата за 1/мес</span>
+                        </label>
+                        <div class="hero__option-price">${item.price} ₽</div>
                     </div>
-                    <div class="hero__cards" style="width: 187px; background-color: #F8F8F8; padding: 16px 24px;">
-                        <div style="display: flex; align-items: center; justify-content: center; margin-top: 10px;">
+                    <div class="hero__layout hero__pay">
+                        <label class="hero__option">
                             <input type="radio" name="payment-${item.id}" style="margin: 0 8px 0 0;">
-                            <div style="font-size: 14px; color: var(--main-bg-color);">Оплата за 7/мес</div>
-                        </div>
-                        <div style="font-size: 18px; color: var(--main-bg-color); text-align: center; margin-top: 12px;">${item.price7m} ₽</div>
+                            <span class="hero__option-title">Оплата за 7/мес</span>
+                        </label>
+                        <div class="hero__option-price">${item.price7m} ₽</div>
                     </div>
                     <img src="https://www.svgrepo.com/show/499592/close-x.svg" alt="Закрыть" width="24" height="24" style="margin-left: 12px; cursor: pointer;" onclick="removeFromCart(${item.id})">
                 </div>
@@ -61,7 +67,23 @@ const postMethods = () => {
         `;
         //cartContainer.appendChild(cartItem);
         paymentContainer.innerHTML = `
-            <div class="hero__layout" style="width: 338px;">123</div>
+            <div class="hero__layout" style="width: 338px;">
+                <div class="payment__header">
+                    <div class="payment__label">К оплате</div>
+                    <div class="payment__amount">6 380 ₽</div>
+                </div>
+                <div class="payment__details">
+                    <div class="payment__courses">Курсы (${count})</div>
+                    <div style="font-size: 16px;">6 380 ₽</div>
+                </div>
+                <div class="payment__choose">
+                    <i></i>
+                </div>
+                <div class="main__btn" style="background-color: var(--main-bg-color); margin-top: 12px">123</div>
+            </div>
+        `
+        cartOverAll.innerHTML = `
+            <span class="hero__name">Корзина (${count})</span>
         `
     });
 }
