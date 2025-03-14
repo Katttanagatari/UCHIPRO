@@ -5,7 +5,6 @@ const cartOverAll = document.getElementById("cart-count");
 
 cartContainer.innerHTML = "";
 paymentContainer.innerHTML = "";
-let count = 0;
 
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
@@ -26,7 +25,6 @@ const postMethods = () => {
         `;
         return;
     } cart.forEach(item => {
-        count++;
        // const cartItem = document.createElement("div");
         const postTags = item.tags.map(tag => `<span class="course__tag-text">${tag}</span>`).join('');
         container.style.height = "auto";
@@ -72,7 +70,7 @@ const postMethods = () => {
                     <div class="payment__amount">0 ₽</div>
                 </div>
                 <div class="payment__details">
-                    <div class="payment__courses">Курсы (${count})</div>
+                    <div class="payment__courses">Курсы (${cart.length})</div>
                     <div class="payment__amount" style="font-size: 16px;">0 ₽</div>
                 </div>
                 <div class="payment__choose">
@@ -86,7 +84,7 @@ const postMethods = () => {
             </div>
         `
         cartOverAll.innerHTML = `
-            <span class="hero__name">Корзина (${count})</span>
+            <span class="hero__name" id="count-el">Корзина (${cart.length})</span>
         `
     });
 
@@ -135,14 +133,16 @@ const postMethods = () => {
         }
     });
 
-    //remove from cart
     const removeCart = document.querySelectorAll('.hero__remove');
+    const сountElement = document.getElementById('count-el');
+    //remove from cart
     removeCart.forEach(btn => {
         btn.addEventListener('click', (event) => {
-            const id = parseInt(event.target.dataset.id); 
+            const id = parseInt(event.currentTarget.dataset.id);
             cart = cart.filter(item => item.id !== id);
             localStorage.setItem("cart", JSON.stringify(cart));
-            event.target.closest('.hero__cart').remove();
+            event.currentTarget.closest('.hero__cart').remove();
+            сountElement.textContent = `Курсы (${cart.length})`;
         });
     });
 };
