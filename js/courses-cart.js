@@ -73,7 +73,7 @@ const postMethods = () => {
                     <div class="payment__amount">0 ₽</div>
                 </div>
                 <div class="payment__details">
-                    <div class="payment__courses">Курсы (${cart.length})</div>
+                    <div class="payment__courses">Курсы (0)</div>
                     <div class="payment__amount" style="font-size: 16px;">0 ₽</div>
                 </div>
                 <div class="payment__choose">
@@ -110,6 +110,8 @@ const postMethods = () => {
     //total sum of courses
     const paymentAmountEl = document.querySelector('.payment__amount');
     const paymentDetailAmountEl = document.querySelector('.payment__details div:nth-child(2)');
+    const paymentLength = document.querySelector('.payment__courses');
+
     const recalcTotalSum = () => {
         let total = 0;
         const checkedBoxs = document.querySelectorAll('input[type="checkbox"][name^="payment-"]:checked');
@@ -120,6 +122,7 @@ const postMethods = () => {
 
         paymentAmountEl.textContent = `${total} ₽`;
         paymentDetailAmountEl.textContent = `${total} ₽`
+        paymentLength.textContent = `Курсы (${checkedBoxs.length})`
     };
 
     document.addEventListener('change', (e) => {
