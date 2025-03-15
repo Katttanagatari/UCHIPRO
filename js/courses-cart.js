@@ -113,7 +113,6 @@ const postMethods = () => {
     const recalcTotalSum = () => {
         let total = 0;
         const checkedBoxs = document.querySelectorAll('input[type="checkbox"][name^="payment-"]:checked');
-    
         checkedBoxs.forEach(e => {
             total += parseFloat(e.value);
         });
@@ -148,6 +147,7 @@ const postMethods = () => {
             event.currentTarget.closest('.hero__cart').remove();
             сountElement.textContent = `Курсы (${cart.length})`;
 
+            recalcTotalSum();
             if (cart.length === 0) {
                 postMethods();
             }
