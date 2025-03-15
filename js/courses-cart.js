@@ -10,6 +10,9 @@ let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
 const postMethods = () => {    
     if (cart.length === 0) {
+        paymentContainer.innerHTML = '';
+        cartOverAll.innerHTML = '';
+        container.style.height = "calc(100vh - 126px)";
         cartContainer.classList.add("cart-empty");
         cartContainer.innerHTML = `
             <img src='../img/empty_cart.png' class="cart-empty__img"/>
@@ -133,9 +136,10 @@ const postMethods = () => {
         }
     });
 
+    //remove from cart
     const removeCart = document.querySelectorAll('.hero__remove');
     const сountElement = document.getElementById('count-el');
-    //remove from cart
+
     removeCart.forEach(btn => {
         btn.addEventListener('click', (event) => {
             const id = parseInt(event.currentTarget.dataset.id);
@@ -143,6 +147,10 @@ const postMethods = () => {
             localStorage.setItem("cart", JSON.stringify(cart));
             event.currentTarget.closest('.hero__cart').remove();
             сountElement.textContent = `Курсы (${cart.length})`;
+
+            if (cart.length === 0) {
+                postMethods();
+            }
         });
     });
 };

@@ -5,7 +5,6 @@
 .hero__cart-container {
     display: flex;
     justify-content: space-between;
-    height: calc(100vh - 126px);
     gap: 24px;
 }
 
