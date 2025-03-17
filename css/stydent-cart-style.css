@@ -141,6 +141,11 @@
     text-align: center;
     z-index: 1;
     color: #C7C7CC;
+    height: 36px;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    border-radius: 10px;
 }
 
 .payment__indicator {
@@ -158,6 +163,7 @@
     background-color: var(--main-bg-color);
     margin-top: 12px;
     color: #fff;
+    font-size: 18px;
 }
 
 .pay-by-requisites {

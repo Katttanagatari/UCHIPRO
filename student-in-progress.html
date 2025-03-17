@@ -35,7 +35,7 @@
 
     <aside class="sidebar">
         <a href="student-page.html" class="sidebar__link">
-            <div class="sidebar__panel" >
+            <div class="sidebar__panel">
                 <img src="img/main_page_btn.svg" class="sidebar__icon" alt="Main page">
                 <div class="sidebar__text">Главная</div>
             </div>
@@ -53,20 +53,22 @@
                 <div class="sidebar__text" style="color: black;">Справка</div>
             </div>
         </a>
-
     </aside>
 
     <div class="hero">
-        <div class="hero__container">
-            <div class="hero__cart-container">
-                <div class="hero__carts" id="student-cart"> </div>
-                <div id="payment-methods"> </div>
+        <div class="cart-empty" style="height: calc(100vh - 82px);">
+            <img src='../img/in_progress_img.png' class="cart-empty__img"/>
+            <div class="cart-empty__title">
+                ИЗВИНИТЕ
             </div>
-            <div id="cart-count"></div>
+            <div class="cart-empty__description">
+                Данная страничка находится в разработке, сюда нельзя
+            </div>
+            <a href="../student-page.html" class="cart-empty__btn">
+                <span class="cart-empty__btn-text">Перейти на главную страницу</span>
+            </a>
         </div>
     </div>
+    
 </body>
-
-<script src="js/courses-cart.js"></script>
-<script src="js/script.js"></script>
 </html>
