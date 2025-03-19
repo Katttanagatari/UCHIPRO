@@ -49,14 +49,14 @@ const postMethods = () => {
                 <div class="hero__tag">
                     <div class="hero__layout hero__pay">
                         <label class="hero__option">
-                            <input type="checkbox" name="payment-${item.id}" value="${item.price}" style="margin: 0 8px 0 0;">
+                            <input type="checkbox" name="payment-${item.id}" value="${item.price}" style="margin: 0 8px 0 0;" class="hero__option-checkbox">
                             <span class="hero__option-title">Оплата за 1/мес</span>
                         </label>
                         <div class="hero__option-price">${item.price} ₽</div>
                     </div>
                     <div class="hero__layout hero__pay">
                         <label class="hero__option">
-                            <input type="checkbox" name="payment-${item.id}" value="${item.price7m}" style="margin: 0 8px 0 0;">
+                            <input type="checkbox" name="payment-${item.id}" value="${item.price7m}" style="margin: 0 8px 0 0;" class="hero__option-checkbox">
                             <span class="hero__option-title">Оплата за 7/мес</span>
                         </label>
                         <div class="hero__option-price">${item.price7m} ₽</div>

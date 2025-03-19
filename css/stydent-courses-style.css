@@ -104,6 +104,40 @@
     padding: 6px 0;
 }
 
+.filter-item__input {
+    opacity: 0;
+    position: absolute;
+    cursor: pointer;
+}
+
+.filter-item__text {
+    display: flex;
+    cursor: pointer;
+}
+
+.filter-item__text::before {
+    content: '';
+    width: 20px;
+    height: 20px;
+    border: 1.4px solid rgb(174, 174, 178);
+    border-radius: 6px;
+    margin-right: 8px;
+}
+
+.filter-item__input:checked + .filter-item__text::before {
+    content: '';
+    width: 20px;
+    height: 20px;
+    border-radius: 6px;
+    margin-right: 8px;
+    background-color: var(--main-bg-color);
+    border: 0;
+    background-image: url(../img/checkbox_checked.svg);
+    background-repeat: no-repeat;
+    background-position: right 4.5px center;
+}
+
+
 .filter__select {
     margin-top: 10px;
     appearance: none;
@@ -129,10 +163,13 @@
     border: none; 
     background-color: #fff;
     cursor: pointer;
-    text-decoration: underline;
     color: #8E8E93;
     margin-top: 10px;
+    padding: 0;
+    font-size: 14px;
+    border-bottom: 1px solid #8E8E93;
 }
+
 
 /*
     COURSES SECTION

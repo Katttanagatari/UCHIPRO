@@ -5,7 +5,7 @@ const postMethods = () => {
     const postContainer = document.getElementById('coursesCards'); // conteiner for courses
 
     postContainer.innerHTML = '';
-    const selectedTags = Array.from(document.querySelectorAll('.tag-filter:checked'))
+    const selectedTags = Array.from(document.querySelectorAll('.filter-item__input:checked'))
     .map(tag => tag.dataset.tag);
 
     const selectedMonth = document.getElementById('months').value;
@@ -82,12 +82,12 @@ const displayUniqueTags = () => {
         const checkbox = document.createElement('input');
         checkbox.type = 'checkbox';
         checkbox.id = `tag-${index + 1}`;
-        checkbox.classList.add('tag-filter');
+        checkbox.classList.add('filter-item__input');
         checkbox.dataset.tag = tag;
 
         const label = document.createElement('label');
         label.htmlFor = checkbox.id;
-        label.classList.add('hero__cards__btn-text');
+        label.classList.add('filter-item__text');
         label.style.color = '#8E8E93';
         label.textContent = tag;
 
@@ -107,6 +107,7 @@ const displayUniqueTags = () => {
         showMoreBtn.classList.add('filter__more');
 
         showMoreBtn.textContent = `Еще ${uniqueTags.length - visibleTagsCount}`
+        
         showMoreEl.appendChild(showMoreBtn);
 
         showMoreBtn.addEventListener('click', () => {
