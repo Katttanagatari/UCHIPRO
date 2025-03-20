@@ -31,6 +31,11 @@ body {
     display: flex;
 }
 
+.no-scroll {
+    overflow: hidden;
+    height: 100%;
+}
+
 .course__tag-text {
     background-color: #F8F8F8;
     padding: 10px 12px;

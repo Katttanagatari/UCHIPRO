@@ -24,6 +24,7 @@ const postMethods = () => {
     filteredCourses.forEach((course) => {
         const postEl = document.createElement('div');
         postEl.classList.add('hero__layout', 'course');
+        postEl.setAttribute('data-id', course.id);
 
         const postTags = course.tags.map(tag => `<span class="course__tag-text">${tag}</span>`).join('');
         postEl.innerHTML = `
@@ -158,13 +159,71 @@ const addToCart = (productId) => {
     alert(`${product.name} добавлен в корзину!`);
 };
 
-document.addEventListener('click', (event) => { // add to cart on click
+// add to cart on click
+document.addEventListener('click', (event) => { 
    const btn = event.target.closest('.add-to-cart');
    if (!btn) return;
+   console.log('123');
 
    const productId = parseInt(btn.getAttribute("data-id"), 10);
    addToCart(productId);
 });
+
+// pop up el for cards
+document.addEventListener('click', (event) => {
+    if (event.target.closest('.add-to-cart')) return;
+
+    const courseEl = event.target.closest('.course');
+    if (!courseEl) return;
+
+    const courseId = parseInt(courseEl.getAttribute('data-id'), 10);
+    const courseObj = COURSES.find(e => e.id === courseId);
+
+    const courseName = courseObj.name;
+    const coursePrice = courseObj.price;
+    const courseDescription = courseObj.description;
+    const postTags = courseObj.tags.map(tag => `<span class="course__tag-text popup__text">${tag}</span>`).join('');
+
+    const popup = document.createElement('div');
+    popup.classList.add('popup');
+    popup.innerHTML = `
+        <div class="popup__content">
+            <div class="popup__header">
+                <div class="course__tag"> ${postTags} </div>
+                <span class="popup__close">&times;</span>
+            </div>
+            <h2 class="course__title">${courseName}</h2>
+            <p>Цена: от ${coursePrice} ₽</p>
+            <p class="popup__dersc">${courseDescription}</p>
+            <hr class="sidebar__divider"/>
+            <button class="clearbtn add-to-cart" data-id="${courseObj.id}">
+                <div class="course__tag-text popup__text">Выбрать</div>
+            </button>
+        </div>
+    `;
+    document.body.appendChild(popup);
+    document.body.classList.add('no-scroll');
+
+    const popupContent = document.querySelector('.popup__content');
+    const closePopup = () => {
+        popup.remove();
+        document.body.classList.remove('no-scroll');
+    };
+
+    document.addEventListener('click', (event) => {
+        if (event.target.classList.contains('popup__close') || 
+            (!popupContent.contains(event.target) && popup.contains(event.target))) {
+            closePopup();
+        };
+    });
+
+    document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') {
+            closePopup();
+        }
+    });
+});
+
 
 
 
