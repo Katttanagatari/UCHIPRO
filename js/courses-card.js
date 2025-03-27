@@ -1,6 +1,5 @@
 
-
-// course rendering method
+    // course rendering method
 const postMethods = () => {
     const postContainer = document.getElementById('coursesCards'); // conteiner for courses
 
@@ -61,8 +60,93 @@ const postMethods = () => {
     });
 };
 
+const minPriceInput = document.getElementById("minPrice");
+const maxPriceInput = document.getElementById("maxPrice");
+const track = document.querySelector(".filter__slider-track");
+const handle1 = document.querySelector(".filter__slider-handle-1");
+const handle2 = document.querySelector(".filter__slider-handle-2");
+const slider = document.querySelector(".filter__slider");
 
-// tags rendering method
+let minPrice = parseFloat(document.getElementById("minPrice").value) || 0;
+let maxPrice = parseFloat(document.getElementById("maxPrice").value || Infinity);
+let minValue = minPrice;
+let maxValue = maxPrice;
+let rangeMin = minPrice;
+let rangeMax = maxPrice;
+
+const updateTrack = () => {
+    let leftPercent = ((minValue - rangeMin) / (rangeMax - rangeMin)) * 100;
+    let rightPercent = ((maxValue - rangeMin) / (rangeMax - rangeMin)) * 100;
+    track.style.left = leftPercent + "%";
+    track.style.width = (rightPercent - leftPercent) + "%";
+    handle1.style.left = leftPercent + "%";
+    handle2.style.left = rightPercent + "%";
+    minPriceInput.value = minValue;
+    maxPriceInput.value = maxValue;
+};
+
+const dragHandler = (handle, isMin) => {
+    let startX, startValue;
+    
+    const onMouseMove = (e) => {
+        let deltaX = e.clientX - startX;
+        let percentMoved = deltaX / slider.offsetWidth;
+        let valueMoved = percentMoved * (rangeMax - rangeMin);
+        let newValue = Math.round(startValue + valueMoved);
+
+        if (isMin) {
+            if (newValue >= rangeMin && newValue <= maxValue - 500) {
+                minValue = newValue;
+            }
+        } else {
+            if (newValue <= rangeMax && newValue >= minValue + 500) {
+                maxValue = newValue;
+            }
+        }
+
+        updateTrack();
+    };
+
+    const onMouseUp = () => {
+        document.removeEventListener("mousemove", onMouseMove);
+        document.removeEventListener("mouseup", onMouseUp);
+    };
+
+    handle.addEventListener("mousedown", (e) => {
+        e.preventDefault();
+        startX = e.clientX;
+        startValue = isMin ? minValue : maxValue;
+        document.addEventListener("mousemove", onMouseMove);
+        document.addEventListener("mouseup", onMouseUp);
+    });
+};
+
+minPriceInput.addEventListener("input", () => {
+    let value = parseInt(minPriceInput.value) || rangeMin;
+    if (value >= rangeMin && value <= maxValue - 500) {
+        minValue = value;
+        updateTrack();
+    }
+});
+
+maxPriceInput.addEventListener("input", () => {
+    let value = parseInt(maxPriceInput.value) || rangeMax;
+    if (value <= rangeMax && value >= minValue + 500) {
+        maxValue = value;
+        updateTrack();
+    }
+});
+
+dragHandler(handle1, true);
+dragHandler(handle2, false);
+updateTrack();
+
+
+
+    // accept all tags
+document.getElementById('filter-accept').addEventListener('click', postMethods);
+
+    // tags rendering method
 const displayUniqueTags = () => {
     const uniqueTags = [...new Set (COURSES.flatMap(course => course.tags))];
 
@@ -96,14 +180,9 @@ const displayUniqueTags = () => {
         tagEl.appendChild(label);
 
         tagsContainer.appendChild(tagEl);
-
-        checkbox.addEventListener('change', postMethods);
-        document.getElementById('months').addEventListener('change', postMethods);
-        document.getElementById('minPrice').addEventListener('input', postMethods);
-        document.getElementById('maxPrice').addEventListener('input', postMethods);
     });
 
-    if (uniqueTags.length > visibleTagsCount){ //btn show more
+    if (uniqueTags.length > visibleTagsCount && showMoreEl){ //btn show more
         const showMoreBtn = document.createElement('button');
         showMoreBtn.classList.add('filter__more');
 
@@ -121,14 +200,12 @@ const displayUniqueTags = () => {
                 .forEach((item,index) => {
                     if (index >= visibleTagsCount){
                         item.style.display = 'none';
-                        showMoreBtn.textContent = `Еще ${uniqueTags.length - visibleTagsCount}`
                     }
                 });
+                showMoreBtn.textContent = `Еще ${uniqueTags.length - visibleTagsCount}`
             }
         });
-    }
-
-
+    };
 }
 
 const addToCart = (productId) => {
@@ -159,17 +236,16 @@ const addToCart = (productId) => {
     alert(`${product.name} добавлен в корзину!`);
 };
 
-// add to cart on click
+    // add to cart on click
 document.addEventListener('click', (event) => { 
    const btn = event.target.closest('.add-to-cart');
    if (!btn) return;
-   console.log('123');
 
    const productId = parseInt(btn.getAttribute("data-id"), 10);
    addToCart(productId);
 });
 
-// pop up el for cards
+    // pop up el for cards
 document.addEventListener('click', (event) => {
     if (event.target.closest('.add-to-cart')) return;
 
@@ -230,11 +306,8 @@ document.addEventListener('click', (event) => {
 
 const initialize = () => {
     const prices = COURSES.map(course => parseFloat(course.price));
-    const minPrice = Math.min(...prices);
-    const maxPrice = Math.max(...prices);
-    document.getElementById("minPrice").value = minPrice;
-    document.getElementById("maxPrice").value = maxPrice;
-
+    document.getElementById("minPrice").value = 0;
+    document.getElementById("maxPrice").value = Math.max(...prices);
 
     postMethods();
     displayUniqueTags();
