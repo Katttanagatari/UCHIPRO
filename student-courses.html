@@ -66,14 +66,16 @@
                 <div class="hero__layout hero__cards filter__section">
                     <div class="filter__label">Цена</div>
                     <div class="filter__inputs">
-                        <input type="number" class="hero__card-input" id="minPrice"> <!-- надо обязательно поменять потом class-->
-                        <input type="number" class="hero__card-input" id="maxPrice">
+                        <input type="number" class="filter__input" id="minPrice">
+                        <span class="filter__currency" style="right: 10px;">₽</span>
+                        <input type="number" class="filter__input" id="maxPrice">
+                        <span class="filter__currency" style="right: 126px;">₽</span>
                     </div>
                     <div class="filter__slider">
                         <div class="filter__slider-rail"></div>
-                        <div class="filter__slider-track" style="left: 25%; width: 50%;"></div>
-                        <div class="filter__slider-handle filter__slider-handle-1" style="left: 25%;"></div>
-                        <div class="filter__slider-handle filter__slider-handle-2" style="left: 75%;"></div>
+                        <div class="filter__slider-track"></div>
+                        <div class="filter__slider-handle filter__slider-handle-1"></div>
+                        <div class="filter__slider-handle filter__slider-handle-2"></div>
                     </div>
                     <div class="filter__point">
                         <div class="filter__label label__text">Месяц</div>
@@ -97,16 +99,17 @@
                     <div class="filter__label label__text" style="margin-top: 26px;">Тематика</div>
                     <div class="filter__categories" id="coursesFiler"> </div>
                     <div id="showMoreEl"> </div>
-                    <button id="filter-accept" class="clearbtn filter__accept-btn" style="width: 100%; margin-top: 10px;">
+                    <button id="filter-accept" class="clearbtn" style="width: 100%; margin-top: 10px;">
                         <div class="hero__layout main__btn" style="background-color: #0A84FF1A;">
                             <span style="font-size: 15px; color: var(--main-bg-color);">Применить</span>
                         </div>
                     </button>
-                    <button id="filter-accept1" class="clearbtn filter__accept-btn" style="width: 100%; margin-top: 5px;">
+                    <button id="filter-accept1" class="clearbtn" style="width: 100%; margin-top: 5px;">
                         <div class="hero__layout main__btn" style="border: 1px solid #000;">
                             <span style="font-size: 15px; color: #000;">Сбор</span>
                         </div>
                     </button>
+                    <div id="filter-absolute-accept" class="filter__accept-btn" style="display: none; top: 0;"></div>
                 </div>
             </div>
         </div>

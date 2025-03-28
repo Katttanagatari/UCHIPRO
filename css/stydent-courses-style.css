@@ -35,6 +35,7 @@
 }
 
 .filter__inputs {
+    position: relative;
     display: flex;
     gap: 10px;
     margin-top: 20px;
@@ -170,6 +171,39 @@
     border-bottom: 1px solid #8E8E93;
 }
 
+.filter__accept-btn {
+    position: absolute;
+    right: 265px;
+}
+
+.filter__accept-btn::before {
+    content: '';
+    background-color: #0A84FF;
+    display: flex;
+    top: 9px;
+    right: 0px;
+    width: 45px; 
+    height: 45px; 
+    background-image: linear-gradient(45deg, var(--main-bg-color), #0768c9);
+    transform: rotate(45deg); 
+    position: absolute; 
+}
+
+.filter__accept-btn::after {
+    background-image: linear-gradient(45deg, var(--main-bg-color), #0768c9);
+    border-radius: 8px;
+    color: #fff;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 700;
+    height: 64px;
+    line-height: 64px;
+    position: absolute;
+    right: 0px;
+    text-align: center;
+    width: 120px;
+    content: 'Показать';
+}
 
 /*
     COURSES SECTION
@@ -296,10 +330,34 @@
 
 
 /* INPUT (CHANGE LATER!!!!) */
-.hero__card-input {
+.filter__input {
     display: flex;
-    max-width: 106px;
+    width: 106px;
     box-sizing: border-box;
+    border: 1px solid rgb(160, 160, 160);
+    border-radius: 4px;
+    font-size: 14px;
+    padding: 6px 10px;
+    color: #A0A0A0;
+}
+
+.filter__currency {
+    position: absolute;
+    top: 5px;
+    color: #A0A0A0;
+    pointer-events: none;
+}
+
+/*  WebKit (Chrome, Safari, Edge) */
+.filter__input::-webkit-outer-spin-button,
+.filter__input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Firefox */
+.filter__input {
+    -moz-appearance: textfield;
 }
 
 

@@ -60,6 +60,9 @@ const postMethods = () => {
     });
 };
 
+
+    // filter slider track update
+
 const minPriceInput = document.getElementById("minPrice");
 const maxPriceInput = document.getElementById("maxPrice");
 const track = document.querySelector(".filter__slider-track");
@@ -67,8 +70,14 @@ const handle1 = document.querySelector(".filter__slider-handle-1");
 const handle2 = document.querySelector(".filter__slider-handle-2");
 const slider = document.querySelector(".filter__slider");
 
-let minPrice = parseFloat(document.getElementById("minPrice").value) || 0;
-let maxPrice = parseFloat(document.getElementById("maxPrice").value || Infinity);
+const getInitialValue = (input, defaultValue) => {
+    const value = parseFloat(input.value);
+    return isNaN(value) ? defaultValue : value;
+};
+
+let minPrice = getInitialValue(minPriceInput, 0);
+let maxPrice = getInitialValue(maxPriceInput, 10000);
+
 let minValue = minPrice;
 let maxValue = maxPrice;
 let rangeMin = minPrice;
@@ -180,6 +189,10 @@ const displayUniqueTags = () => {
         tagEl.appendChild(label);
 
         tagsContainer.appendChild(tagEl);
+    });
+
+    document.querySelectorAll(".filter-item__input").forEach((checkbox) => {
+        checkbox.addEventListener("change", () => filterShowBtn(checkbox, 25));
     });
 
     if (uniqueTags.length > visibleTagsCount && showMoreEl){ //btn show more
@@ -301,16 +314,35 @@ document.addEventListener('click', (event) => {
 });
 
 
+    //accept absolute btn
+const filterAccept = document.getElementById("filter-absolute-accept");
+
+const filterShowBtn = (el, offset) => {
+    const section = document.querySelector(".filter__section");
+
+    const top = el.getBoundingClientRect().top - section.getBoundingClientRect().top - offset;
+    filterAccept.style.top = `${top}px`;
+    filterAccept.style.display = "block";
+};
+
+const trackElements = [handle1, handle2];
+trackElements.forEach((el) => {
+    el.addEventListener("mousedown", () => filterShowBtn(el, 25));
+});
+
+const inputElemets = [minPriceInput, maxPriceInput];
+inputElemets.forEach((el) => {
+    el.addEventListener("mousedown", () => filterShowBtn(el, 15));
+});
+
+
 
 
 
 const initialize = () => {
-    const prices = COURSES.map(course => parseFloat(course.price));
-    document.getElementById("minPrice").value = 0;
-    document.getElementById("maxPrice").value = Math.max(...prices);
-
     postMethods();
     displayUniqueTags();
+
 };
 
 document.addEventListener('DOMContentLoaded', initialize);
