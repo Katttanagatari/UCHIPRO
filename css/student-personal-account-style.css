@@ -1,0 +1,66 @@
+.hero__content {
+    display: flex;
+    margin-top: 24px;
+    gap: 24px;
+}
+
+.hero__cards--small {
+    width: 227px;
+    padding: 24px;
+}
+
+.hero__cards--large {
+    width: 376px;
+    padding: 24px;
+}
+
+.hero__card-pfp {
+    width: 179px;
+    height: 179px;
+}
+
+.hero__card-title {
+    font-size: 20px;
+    margin-top: 18px;
+    font-weight: 500;
+}
+
+.hero__card-name--spaced {
+    display: flex;
+    align-items: center;
+    margin-top: 26px;
+}
+
+.hero__card-name {
+    display: flex;
+    align-items: center;
+    margin-top: 12px;
+}
+
+.hero__card-text {
+    overflow: hidden;
+    text-overflow: ellipsis; 
+    font-size: 14px;
+}
+
+.hero__card-info {
+    display: flex;
+    justify-content: space-between;
+}
+
+.hero__card-info.mt26 {
+    margin-top: 26px;
+}
+
+.hero__card-info.mt12 {
+    margin-top: 12px;
+}
+
+.hero__button-group {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    margin-top: 10px;
+}
+
+/* style="padding: 6px 16px; background-color: #F8F8F8; width: 135px; height: 34px; */

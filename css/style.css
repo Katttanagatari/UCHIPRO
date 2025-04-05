@@ -170,6 +170,14 @@ body {
     margin-top: 10px;
 }
 
+.hero__hello {
+    display: flex;
+}
+
+.hero__img {
+    margin-right: 12px;
+}
+
 .info__box {
     margin-top: 22px;
     margin-left: 14px;
