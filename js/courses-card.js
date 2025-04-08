@@ -314,7 +314,7 @@ document.addEventListener('click', (event) => {
 });
 
 
-    //accept absolute btn
+      //accept filter absolute btn
 const filterAccept = document.getElementById("filter-absolute-accept");
 
 const filterShowBtn = (el, offset) => {
@@ -323,20 +323,40 @@ const filterShowBtn = (el, offset) => {
     const top = el.getBoundingClientRect().top - section.getBoundingClientRect().top - offset;
     filterAccept.style.top = `${top}px`;
     filterAccept.style.display = "block";
+    console.log("popup")
 };
+
+let isDragging = false;
 
 const trackElements = [handle1, handle2];
 trackElements.forEach((el) => {
-    el.addEventListener("mousedown", () => filterShowBtn(el, 25));
+    el.addEventListener("click", () => {
+        filterShowBtn(el, 25);
+        isDragging = true;
+    });
 });
 
 const inputElemets = [minPriceInput, maxPriceInput];
 inputElemets.forEach((el) => {
-    el.addEventListener("mousedown", () => filterShowBtn(el, 15));
+    el.addEventListener("input", () => filterShowBtn(el, 15));
 });
 
 
+// const selectedMonth = document.getElementById('months');
+// selectedMonth.addEventListener("change", (el) => {
+//     filterShowBtn(el.target, 15);
+// });
 
+
+document.addEventListener('click', (e) => {
+    if (!filterAccept.contains(e.target) && !trackElements.some(el => el.contains(e.target))) {
+        filterAccept.style.display = "none";
+    }
+});
+
+filterAccept.addEventListener('click', () => {
+    postMethods();
+});
 
 
 const initialize = () => {

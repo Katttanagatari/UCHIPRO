@@ -9,6 +9,11 @@
     padding: 24px;
 }
 
+.hero__cards--medium {
+    max-width: 376px;
+    padding: 24px;
+}
+
 .hero__cards--large {
     width: 376px;
     padding: 24px;
@@ -63,4 +68,8 @@
     margin-top: 10px;
 }
 
-/* style="padding: 6px 16px; background-color: #F8F8F8; width: 135px; height: 34px; */
+.payment__icons {
+    display: flex;
+    margin-top: 26px;
+    gap: 12px;
+}

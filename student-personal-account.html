@@ -66,23 +66,25 @@
             </div>
             <div class="hero__title" style="font-weight: 400;">Аккаунт</div>
             <div class="hero__content">
+
                 <div class="hero__layout hero__cards--small">
                     <img src="img/pfp.gif" alt="pfp" class="hero__card-pfp">
                     <div class="hero__card-title">Ирина Козина</div>
                     <div class="hero__card-name--spaced">
-                        <svg width="24" height="24" style="background-color: #C7C7CC; margin-right: 12px; display: block;"></svg>
-                        <div class="hero__card-text">jackson.gaabage@example.com</div>
+                        <img src="img/student_personal_page_email.svg" alt="email">
+                        <div class="hero__card-text" style="color: #C7C7CC; margin-left: 12px;">jackson.gaabage@example.com</div>
                     </div>
                     <div class="hero__card-name">
-                        <svg width="24" height="24" style="background-color: #C7C7CC; margin-right: 12px; display: block;"></svg>
-                        <div class="hero__card-text">+7 (267) 867-7643</div>
+                        <img src="img/student_personal_page_number.svg" alt="number">
+                        <div class="hero__card-text" style="color: #C7C7CC; margin-left: 10px;">+7 (267) 867-7643</div>
                     </div>
                 </div>
+
                 <div>
                     <div class="hero__layout hero__cards--large">
                         <div class="hero__card-info">
                             <div class="hero__card-text" style="font-size: 20px;">Личная информация</div>
-                            <svg width="20" height="20" style="background-color: #C7C7CC; align-self: end;"></svg>
+                            <img src="img/student_personal_page_change.svg" alt="change">
                         </div>
                         <div class="hero__card-info mt26">
                             <div style="color: #C7C7CC;">Имя</div>
@@ -103,23 +105,24 @@
                     </div>
                     <div class="hero__layout hero__cards--large" style="margin-top: 24px">
                         <div class="hero__card-text" style="font-size: 20px;">Почта и пароль</div>
-                        <div class="hero__card-text" style="margin-top: 10px;">Для информационных рассылок и восстановления доступа к аккаунту</div>
+                        <div class="hero__card-text" style="margin-top: 10px; color: #AEAEB2">Для информационных рассылок и восстановления доступа к аккаунту</div>
                         <div class="hero__button-group">
-                            <div class="hero__cards main_page_btn">
-                                <span style="font-size: 12px; font-weight: 500; color: var(--main-bg-color); margin: 0 auto;">Изменить почту</span>
+                            <div class="main__btn" style="background-color: #F8F8F8;">
+                                <span style="font-size: 13px; color: var(--main-bg-color);">Изменить почту</span>
                             </div>
-                            <div class="hero__cards" style="padding: 6px 16px; background-color: #F8F8F8; width: 135px; height: 34px;">
-                                <span style="font-size: 12px; font-weight: 500; color: var(--main-bg-color);">Изменить пароль</span>
+                            <div class="main__btn" style="background-color: #F8F8F8;">
+                                <span style="font-size: 13px; color: var(--main-bg-color);">Изменить пароль</span>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div>
-                    <div class="hero__cards" style="max-width: 376px; padding: 24px;">
-                        <div class="hero__cards__btn-text" style="color: #000; font-size: 20px; margin-top: 0;">Способ оплаты</div>
-                        <div style="display: flex; margin-top: 26px; gap: 12px;">
+
+                <div class="payment">
+                    <div class="hero__layout hero__cards--medium">
+                        <div class="hero__card-text" style="font-size: 20px;">Способ оплаты</div>
+                        <div class="payment__icons">
                             <div style="width: 70px; height: 48px; border: 1px solid rgb(217, 217, 217); border-radius: 7px; box-sizing: border-box; display: flex; justify-content: center; align-items: center;">
-                                <svg width="45" height="27.61" style="background-color: #C7C7CC;"></svg>
+                                <img src="img/student_personal_page_mastercard.svg" alt="mastercard">
                             </div>
                             <div style="width: 70px; height: 48px; border: 1px solid rgb(217, 217, 217); border-radius: 7px; box-sizing: border-box; display: flex; justify-content: center; align-items: center;">
                                 <svg width="45" height="27.61" style="background-color: #C7C7CC;"></svg>
@@ -128,24 +131,25 @@
                                 <svg width="45" height="27.61" style="background-color: #C7C7CC;"></svg>
                             </div>
                         </div>
-                        <div style="display: flex; justify-content: space-between; margin-top: 26px;">
-                            <div class="sidebar__panel-text">Тип карты</div>
-                            <div class="hero__cards__btn-text" style="color: #000; margin: 0;">MasterCard</div>
+                        <div class="hero__card-info mt26">
+                            <div style="color: #C7C7CC;">Тип карты</div>
+                            <div>MasterCard</div>
                         </div>
-                        <div style="display: flex; justify-content: space-between; margin-top: 12px;">
-                            <div class="sidebar__panel-text">Хз</div>
-                            <div class="hero__cards__btn-text" style="color: #000; margin: 0;">Irina Kirilova</div>
+                        <div class="hero__card-info mt12">
+                            <div style="color: #C7C7CC;">Хз</div>
+                            <div>Irina Kirilova</div>
                         </div>
-                        <div style="display: flex; justify-content: space-between; margin-top: 12px;">
-                            <div class="sidebar__panel-text">Истекает</div>
-                            <div class="hero__cards__btn-text" style="color: #000; margin: 0;">12/31</div>
+                        <div class="hero__card-info mt12">
+                            <div style="color: #C7C7CC;">Истекает</div>
+                            <div>12/31</div>
                         </div>
-                        <div style="display: flex; justify-content: space-between; margin-top: 12px;">
-                            <div class="sidebar__panel-text">№ карты</div>
-                            <div class="hero__cards__btn-text" style="color: #000; margin: 0;">1112</div>
+                        <div class="hero__card-info mt12">
+                            <div style="color: #C7C7CC;">№ карты</div>
+                            <div>1112</div>
                         </div>
                     </div>
                 </div>
+
             </div>
         </div>
     </div>
