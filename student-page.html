@@ -13,6 +13,16 @@
             <img src="img/logo.svg" alt="logo" class="header__logo-image">
             <div class="header__logo-text">УчиПро</div>
         </div>
+
+        <button 
+            class="header__nav"
+            id="nav-toggle"
+        >
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
         <div class="header__actions">
             <div class="header__icons">
                 <a href="student-notifications.html">
@@ -32,6 +42,18 @@
             </div>
         </div>
     </header>
+
+    <div class="hero__nav" id="hero-nav">
+        <a class="hero__nav-item" href="student-courses.html">
+            <img src="img/courses_page_btn.svg" alt="courses">
+            <span class="hero__nav-label">Курсы</span>
+        </a>
+        <hr class="sidebar__divider"/>
+        <a class="hero__nav-item">
+            <img src="img/help_page_btn.svg" alt="help">
+            <span href="#" class="hero__nav-label" style="color: #000;">Справка</span>
+        </a>
+    </div>
 
     <aside class="sidebar">
         <a href="student-page.html" class="sidebar__link">
@@ -67,16 +89,41 @@
             <div class="info__box">План на день <span class="date-number">8 января</span></div>
         </div>
     </div>
+
+    <footer class="footer">
+        <nav class="footer__nav">
+            <a href="student-page.html" class="footer__item">
+                <img src="img/main_page_btn.svg" class="footer__icon" alt="Mage page">
+                <div class="footer__label" data-active="false">Главная</div>
+            </a>
+            <a href="student-message.html" class="footer__item">
+                <img src="img/messages_btn.svg" class="footer__icon" alt="Messages">
+                <div class="footer__label" data-active="false">Месседжер</div>
+            </a>
+            <a href="student-cart.html" class="footer__item">
+                <img src="img/shop_page_btn.svg" class="footer__icon" alt="Mage page">
+                <div class="footer__label" data-active="false">Корзина</div>
+            </a>
+            <a href="student-message.html" class="footer__item">
+                <img src="img/notifications_btn.svg" class="footer__icon" alt="Mage page">
+                <div class="footer__label" data-active="false">Уведомления</div>
+            </a>
+            <a href="student-message.html" class="footer__item">
+                <img src="img/pfp.gif" class="footer__icon pfp" alt="Mage page">
+                <div class="footer__label" data-active="false">Профиль</div>
+            </a>
+        </nav>
+    </footer>
     
 </body>
-<script>
-    function getcurrentDay() {
-        const date = new Date();
-        const day = date.getDate();
-        const month = date.toLocaleString('ru', {month: 'long'});
-        return `${day} ${month}`;
-    }
-    document.querySelector('.date-number').textContent = getcurrentDay();
-</script>
+    <script>
+        function getcurrentDay() {
+            const date = new Date();
+            const day = date.getDate();
+            const month = date.toLocaleString('ru', {month: 'long'});
+            return `${day} ${month}`;
+        }
+        document.querySelector('.date-number').textContent = getcurrentDay();
+    </script>
 <script src="js/script.js"></script>
 </html>

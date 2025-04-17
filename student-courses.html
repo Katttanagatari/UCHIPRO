@@ -16,6 +16,16 @@
             <img src="img/logo.svg" alt="logo" class="header__logo-image">
             <div class="header__logo-text">УчиПро</div>
         </div>
+
+        <button 
+            class="header__nav"
+            id="nav-toggle"
+        >
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
         <div class="header__actions">
             <div class="header__icons">
                 <a href="student-notifications.html">
@@ -35,6 +45,18 @@
             </div>
         </div>
     </header>
+
+    <div class="hero__nav" id="hero-nav">
+        <a class="hero__nav-item" href="student-courses.html">
+            <img src="img/courses_page_btn.svg" alt="courses">
+            <span class="hero__nav-label">Курсы</span>
+        </a>
+        <hr class="sidebar__divider"/>
+        <a class="hero__nav-item">
+            <img src="img/help_page_btn.svg" alt="help">
+            <span href="#" class="hero__nav-label" style="color: #000;">Справка</span>
+        </a>
+    </div>
 
     <aside class="sidebar">
         <a href="student-page.html" class="sidebar__link">
@@ -60,11 +82,17 @@
 
     <div class="hero">
         <div class="hero__container">
-            <div class="hero__title">Курсы</div>
+            <div class="hero__title-filter">
+                <div class="hero__title">Курсы</div>
+                <div class="hero__filter">Фильтры</div>
+            </div>
             <div class="hero__content">
                 <div class="hero__cards-container" id="coursesCards"> </div>
                 <div class="hero__layout hero__cards filter__section">
-                    <div class="filter__label">Цена</div>
+                    <div class="filter__title">
+                        <div class="filter__label">Цена</div>
+                        <div class="filter__close">X</div>
+                    </div>
                     <div class="filter__inputs">
                         <input type="number" class="filter__input" id="minPrice">
                         <span class="filter__currency" style="right: 10px;">₽</span>
@@ -104,9 +132,9 @@
                             <span style="font-size: 15px; color: var(--main-bg-color);">Применить</span>
                         </div>
                     </button>
-                    <button id="filter-accept1" class="clearbtn" style="width: 100%; margin-top: 5px;">
+                    <button id="filter-reset" class="clearbtn" style="width: 100%; margin-top: 5px;">
                         <div class="hero__layout main__btn" style="border: 1px solid #000;">
-                            <span style="font-size: 15px; color: #000;">Сбор</span>
+                            <span style="font-size: 15px; color: #000;">Сброс</span>
                         </div>
                     </button>
                     <div id="filter-absolute-accept" class="filter__accept-btn" style="display: none; top: 0;"></div>
@@ -114,6 +142,32 @@
             </div>
         </div>
     </div>
+
+    <footer class="footer">
+        <nav class="footer__nav">
+            <a href="student-page.html" class="footer__item">
+                <img src="img/main_page_btn.svg" class="footer__icon" alt="Mage page">
+                <div class="footer__label" data-active="false">Главная</div>
+            </a>
+            <a href="student-message.html" class="footer__item">
+                <img src="img/messages_btn.svg" class="footer__icon" alt="Messages">
+                <div class="footer__label" data-active="false">Месседжер</div>
+            </a>
+            <a href="student-cart.html" class="footer__item">
+                <img src="img/shop_page_btn.svg" class="footer__icon" alt="Mage page">
+                <div class="footer__label" data-active="false">Корзина</div>
+            </a>
+            <a href="student-message.html" class="footer__item">
+                <img src="img/notifications_btn.svg" class="footer__icon" alt="Mage page">
+                <div class="footer__label" data-active="false">Уведомления</div>
+            </a>
+            <a href="student-message.html" class="footer__item">
+                <img src="img/pfp.gif" class="footer__icon pfp" alt="Mage page">
+                <div class="footer__label" data-active="false">Профиль</div>
+            </a>
+        </nav>
+    </footer>
+
 </body>
 <script src="constants/courses.js"></script>
 <script src="js/courses-card.js"></script>

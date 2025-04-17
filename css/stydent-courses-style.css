@@ -1,18 +1,42 @@
+.hero__title-filter {
+    display: flex;
+    justify-content: space-between;
+}
+
 .hero__title {
     font-weight: 400;
     margin: 0 12px 24px 12px;
+}
+
+.hero__filter {
+    font-size: 16px;
+    justify-content: center;
+    display: none;
+    margin-top: 5px;
+}
+
+.hero__filter::before {
+    content: '';
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    background-image: url(../img/courses_page_filter.svg);
+    background-size: contain;
+    margin-right: 5px;
 }
 
 .hero__content {
     display: flex; 
     justify-content: space-between; 
     align-items: flex-start;
+    gap: 35px;
 }
 
 .hero__cards-container {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 24px;
+    width: 100%;
 }
 
 .hero__layout.hero__cards {
@@ -28,10 +52,23 @@
     top: 100px;
 }
 
+.filter__section.open {
+    transform: scaleY(1);
+}
+
 .filter__label {
     color: #8E8E93;
     font-size: 15px;
     font-weight: 500;
+}
+
+.filter__title {
+    display: flex;
+    justify-content: space-between;
+}
+
+.filter__close {
+    display: none;
 }
 
 .filter__inputs {
@@ -215,6 +252,7 @@
     display: flex;
     flex-direction: column;
     padding: 26px;
+    cursor: pointer;
 }
 
 .course__tag {
@@ -361,8 +399,75 @@
 }
 
 
+/*
+    MEDIA
+*/
+
+@media (max-width: 1840px) {
+    .hero__cards-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .course {
+        width: 100%;
+    }
+}
+
+@media (max-width: 1400px) {
+    .hero__cards-container {
+        grid-template-columns: repeat(1, 1fr);
+        width: 100%;
+    }
+
+    .hero__content {
+        gap: 15px;
+    }
+
+    .course {
+        width: 100%;
+    }
+
+}
+
+@media (max-width: 800px) {
+
+    .filter__section {
+        position: absolute;
+        width: 100%;
+        left: 0;
+        top: 75px;
+        transform: scaleY(0);
+    }
+
+    .filter__input {
+        width: 100%;
+        text-align: center;
+    }
+
+    .filter__close {
+        display: block;
+    }
+
+    .filter__currency {
+        display: none;
+    }
+
+    .hero__filter {
+        display: flex;
+    }
+
+    .filter-item {
+        padding: 2px 0;
+    }
+    
+
+    .btn__add span {
+        display: none;
+    }
+
+    .course__cart-icon {
+        margin-right: 0px;
+    }
 
 
-
-
-
+}

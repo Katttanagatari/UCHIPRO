@@ -67,7 +67,7 @@ const postMethods = () => {
         `;
         //cartContainer.appendChild(cartItem);
         paymentContainer.innerHTML = `
-            <div class="hero__layout" style="width: 338px;">
+            <div class="hero__layout payment">
                 <div class="payment__header">
                     <div class="payment__label">К оплате</div>
                     <div class="payment__amount">0 ₽</div>
@@ -156,7 +156,32 @@ const postMethods = () => {
             }
         });
     });
+
+    //@media запрос
+    const carts = document.querySelectorAll('.hero__cart');
+    const moveAllCloseButtons = () => {
+        carts.forEach(cart => {
+            const removeBtn = cart.querySelector('.hero__remove');
+            const flexContainer = cart.querySelector('.flex');
+            const tagContainer = cart.querySelector('.hero__tag');
+
+            if (!removeBtn || !flexContainer || !tagContainer) return;
+
+            if (window.innerWidth <= 800) {
+                if (!flexContainer.contains(removeBtn)) {
+                  flexContainer.appendChild(removeBtn);
+                }
+              } else {
+                if (!tagContainer.contains(removeBtn)) {
+                  tagContainer.appendChild(removeBtn);
+                }
+              }
+        });
+    }
+    moveAllCloseButtons();
 };
 
-document.addEventListener("DOMContentLoaded", postMethods);
+document.addEventListener("DOMContentLoaded", () => {
+    postMethods();
+});
 

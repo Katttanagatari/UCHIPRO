@@ -331,7 +331,7 @@ const COURSES = [
     },
     {
         id: 12,
-        tags: ['Программирование', 'PHP'],
+        tags: ['Программирование', 'PHP',],
         name: 'Web Development with PHP',
         yearFrom: '2025',
         yearTo: '2026',
