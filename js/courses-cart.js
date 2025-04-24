@@ -46,7 +46,7 @@ const postMethods = () => {
                         </div>
                     </div>
                 </div>
-                <div class="hero__tag">
+                <div class="hero__price">
                     <div class="hero__layout hero__pay">
                         <label class="hero__option">
                             <input type="checkbox" name="payment-${item.id}" value="${item.price}" style="margin: 0 8px 0 0;" class="hero__option-checkbox">
@@ -158,27 +158,30 @@ const postMethods = () => {
     });
 
     //@media запрос
-    const carts = document.querySelectorAll('.hero__cart');
-    const moveAllCloseButtons = () => {
-        carts.forEach(cart => {
-            const removeBtn = cart.querySelector('.hero__remove');
-            const flexContainer = cart.querySelector('.flex');
-            const tagContainer = cart.querySelector('.hero__tag');
-
-            if (!removeBtn || !flexContainer || !tagContainer) return;
-
-            if (window.innerWidth <= 800) {
-                if (!flexContainer.contains(removeBtn)) {
-                  flexContainer.appendChild(removeBtn);
-                }
-              } else {
-                if (!tagContainer.contains(removeBtn)) {
-                  tagContainer.appendChild(removeBtn);
-                }
-              }
+    const moveRemoveButtons = () => {
+        document.querySelectorAll('.hero__cart').forEach(cart => {
+          const removeBtn = cart.querySelector('.hero__remove');
+          const tagBlock = cart.querySelector('.hero__price');
+          const flexBlock = cart.querySelector('.flex');
+      
+          if (!removeBtn || !tagBlock || !flexBlock) return;
+      
+          if (window.innerWidth <= 740) {
+            // Переносим в flexBlock, если он там ещё не находится
+            if (removeBtn.parentElement !== flexBlock) {
+              flexBlock.appendChild(removeBtn);
+            }
+          } else {
+            // Переносим обратно в tagBlock, если он там ещё не находится
+            if (removeBtn.parentElement !== tagBlock) {
+              tagBlock.appendChild(removeBtn);
+            }
+          }
         });
-    }
-    moveAllCloseButtons();
+      };
+      window.addEventListener('resize', moveRemoveButtons);
+      window.addEventListener('DOMContentLoaded', moveRemoveButtons);
+    
 };
 
 document.addEventListener("DOMContentLoaded", () => {

@@ -61,6 +61,24 @@
     margin-top: 12px;
 }
 
+.card {
+    display: flex;
+    align-items: center;
+}
+
+.card::before {
+    content: '';
+    background-image: url(../img/student_personal_page_three_points.svg);
+    width: 25px;
+    height: 4px;
+    display: inline-block;
+    margin-right: 8px;
+}
+
+.mt24 {
+    margin-top: 24px;
+}
+
 .hero__button-group {
     display: flex;
     gap: 16px;
@@ -72,4 +90,70 @@
     display: flex;
     margin-top: 26px;
     gap: 12px;
+}
+
+@media (max-width: 1200px) {
+    .hero__info {
+        width: calc(100% - 251px);
+    }
+
+    .hero__cards--large {
+        width: 100%;
+    }
+
+    .hero__content {
+        flex-wrap: wrap;
+        min-width: 0;
+    }
+    .hero__cards--medium {
+       display: flex;
+    }
+
+    .payment__icons {
+        flex-wrap: wrap;
+    }
+
+    .hero__cards--medium {
+        max-width: 411px;
+    }
+}
+
+@media (max-width: 740px) {
+    .hero__content{
+        flex-direction: column;
+        gap: 12px;
+    }
+    
+    .hero__cards--small {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .hero__card-pfp {
+        max-width: 123px;
+        max-height: 123px;
+    }
+
+    .hero__card-name--spaced {
+        width: 150px;
+    }
+
+    .hero__info {
+        width: 100%;
+    }
+
+    .hero__cards--medium {
+        max-width: 100%;
+        justify-content: space-between;
+    }
+    
+    .hero__card-information {
+        width: 200px;
+    }
+
+    .hero {
+        margin-bottom: 87px;
+    }
+
 }

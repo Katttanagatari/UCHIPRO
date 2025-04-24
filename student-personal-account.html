@@ -13,12 +13,22 @@
             <img src="img/logo.svg" alt="logo" class="header__logo-image">
             <div class="header__logo-text">УчиПро</div>
         </div>
+
+        <button 
+            class="header__nav"
+            id="nav-toggle"
+        >
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
         <div class="header__actions">
             <div class="header__icons">
-                <a href="student-notifications.html">
+                <a href="student-in-progress.html">
                     <img src="img/notifications_btn.svg" alt="Notifications">
                 </a>
-                <a href="student-message.html">
+                <a href="student-in-progress.html">
                     <img src="img/messages_btn.svg" alt="Messages">
                 </a>
                 <a href="student-cart.html">
@@ -27,15 +37,27 @@
             </div>
             <div class="header__avatar">
                 <a href="student-personal-account.html">
-                    <img src="img/pfp.gif" alt="Avatar" style="border-radius: 50%; width: 45px; height: 45px;">
+                    <img src="img/Avatar.png" alt="Avatar">
                 </a>
             </div>
         </div>
     </header>
 
+    <div class="hero__nav" id="hero-nav">
+        <a class="hero__nav-item" href="student-courses.html">
+            <img src="img/courses_page_btn.svg" alt="courses">
+            <span class="hero__nav-label">Курсы</span>
+        </a>
+        <hr class="sidebar__divider"/>
+        <a class="hero__nav-item">
+            <img src="img/help_page_btn.svg" alt="help">
+            <span href="#" class="hero__nav-label" style="color: #000;">Справка</span>
+        </a>
+    </div>
+
     <aside class="sidebar">
         <a href="student-page.html" class="sidebar__link">
-            <div class="sidebar__panel">
+            <div class="sidebar__panel" >
                 <img src="img/main_page_btn.svg" class="sidebar__icon" alt="Main page">
                 <div class="sidebar__text">Главная</div>
             </div>
@@ -47,12 +69,13 @@
             </div>
         </a>
         <hr class="sidebar__divider"/>
-        <a href="student-help.html" class="sidebar__link">
+        <a href="student-in-progress.html" class="sidebar__link">
             <div class="sidebar__panel">
                 <img src="img/help_page_btn.svg" class="sidebar__icon" alt="Help page">
                 <div class="sidebar__text" style="color: black;">Справка</div>
             </div>
         </a>
+
     </aside>
 
     <div class="hero">
@@ -69,18 +92,20 @@
 
                 <div class="hero__layout hero__cards--small">
                     <img src="img/pfp.gif" alt="pfp" class="hero__card-pfp">
-                    <div class="hero__card-title">Ирина Козина</div>
-                    <div class="hero__card-name--spaced">
-                        <img src="img/student_personal_page_email.svg" alt="email">
-                        <div class="hero__card-text" style="color: #C7C7CC; margin-left: 12px;">jackson.gaabage@example.com</div>
-                    </div>
-                    <div class="hero__card-name">
-                        <img src="img/student_personal_page_number.svg" alt="number">
-                        <div class="hero__card-text" style="color: #C7C7CC; margin-left: 10px;">+7 (267) 867-7643</div>
+                    <div class="">
+                        <div class="hero__card-title">Ирина Козина</div>
+                        <div class="hero__card-name--spaced">
+                            <img src="img/student_personal_page_email.svg" alt="email">
+                            <div class="hero__card-text" style="color: #C7C7CC; margin-left: 12px;">jackson.gaabage@example.com</div>
+                        </div>
+                        <div class="hero__card-name">
+                            <img src="img/student_personal_page_number.svg" alt="number">
+                            <div class="hero__card-text" style="color: #C7C7CC; margin-left: 10px;">+7 (267) 867-7643</div>
+                        </div>
                     </div>
                 </div>
 
-                <div>
+                <div class="hero__info">
                     <div class="hero__layout hero__cards--large">
                         <div class="hero__card-info">
                             <div class="hero__card-text" style="font-size: 20px;">Личная информация</div>
@@ -103,7 +128,7 @@
                             <div>Женский</div>
                         </div>
                     </div>
-                    <div class="hero__layout hero__cards--large" style="margin-top: 24px">
+                    <div class="hero__layout hero__cards--large mt24">
                         <div class="hero__card-text" style="font-size: 20px;">Почта и пароль</div>
                         <div class="hero__card-text" style="margin-top: 10px; color: #AEAEB2">Для информационных рассылок и восстановления доступа к аккаунту</div>
                         <div class="hero__button-group">
@@ -119,33 +144,37 @@
 
                 <div class="payment">
                     <div class="hero__layout hero__cards--medium">
-                        <div class="hero__card-text" style="font-size: 20px;">Способ оплаты</div>
-                        <div class="payment__icons">
-                            <div style="width: 70px; height: 48px; border: 1px solid rgb(217, 217, 217); border-radius: 7px; box-sizing: border-box; display: flex; justify-content: center; align-items: center;">
-                                <img src="img/student_personal_page_mastercard.svg" alt="mastercard">
+                        <div>
+                            <div class="hero__card-text" style="font-size: 20px;">Способ оплаты</div>
+                            <div class="payment__icons">
+                                <div style="width: 70px; height: 48px; border: 1px solid rgb(217, 217, 217); border-radius: 7px; box-sizing: border-box; display: flex; justify-content: center; align-items: center;">
+                                    <img src="img/student_personal_page_mastercard.svg" alt="mastercard">
+                                </div>
+                                <div style="width: 70px; height: 48px; border: 1px solid rgb(217, 217, 217); border-radius: 7px; box-sizing: border-box; display: flex; justify-content: center; align-items: center;">
+                                    <svg width="45" height="27.61" style="background-color: #C7C7CC;"></svg>
+                                </div>
+                                <div style="width: 70px; height: 48px; border: 1px solid rgb(217, 217, 217); border-radius: 7px; box-sizing: border-box; display: flex; justify-content: center; align-items: center;">
+                                    <svg width="45" height="27.61" style="background-color: #C7C7CC;"></svg>
+                                </div>
                             </div>
-                            <div style="width: 70px; height: 48px; border: 1px solid rgb(217, 217, 217); border-radius: 7px; box-sizing: border-box; display: flex; justify-content: center; align-items: center;">
-                                <svg width="45" height="27.61" style="background-color: #C7C7CC;"></svg>
+                        </div>
+                        <div class="hero__card-information">
+                            <div class="hero__card-info mt26">
+                                <div style="color: #C7C7CC;">Тип карты</div>
+                                <div>MasterCard</div>
                             </div>
-                            <div style="width: 70px; height: 48px; border: 1px solid rgb(217, 217, 217); border-radius: 7px; box-sizing: border-box; display: flex; justify-content: center; align-items: center;">
-                                <svg width="45" height="27.61" style="background-color: #C7C7CC;"></svg>
+                            <div class="hero__card-info mt12">
+                                <div style="color: #C7C7CC;">Хз</div>
+                                <div>Irina Kirilova</div>
                             </div>
-                        </div>
-                        <div class="hero__card-info mt26">
-                            <div style="color: #C7C7CC;">Тип карты</div>
-                            <div>MasterCard</div>
-                        </div>
-                        <div class="hero__card-info mt12">
-                            <div style="color: #C7C7CC;">Хз</div>
-                            <div>Irina Kirilova</div>
-                        </div>
-                        <div class="hero__card-info mt12">
-                            <div style="color: #C7C7CC;">Истекает</div>
-                            <div>12/31</div>
-                        </div>
-                        <div class="hero__card-info mt12">
-                            <div style="color: #C7C7CC;">№ карты</div>
-                            <div>1112</div>
+                            <div class="hero__card-info mt12">
+                                <div style="color: #C7C7CC;">Истекает</div>
+                                <div>12/31</div>
+                            </div>
+                            <div class="hero__card-info mt12">
+                                <div style="color: #C7C7CC;">№ карты</div>
+                                <div class="card">1112</div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -153,6 +182,31 @@
             </div>
         </div>
     </div>
+
+    <footer class="footer">
+        <nav class="footer__nav">
+            <a href="student-page.html" class="footer__item">
+                <img src="img/main_page_btn.svg" class="footer__icon" alt="Mage page">
+                <div class="footer__label" data-active="false">Главная</div>
+            </a>
+            <a href="student-in-progress.html" class="footer__item">
+                <img src="img/messages_btn.svg" class="footer__icon" alt="Messages">
+                <div class="footer__label" data-active="false">Месседжер</div>
+            </a>
+            <a href="student-cart.html" class="footer__item">
+                <img src="img/shop_page_btn.svg" class="footer__icon" alt="Mage page">
+                <div class="footer__label" data-active="false">Корзина</div>
+            </a>
+            <a href="student-in-progress.html" class="footer__item">
+                <img src="img/notifications_btn.svg" class="footer__icon" alt="Mage page">
+                <div class="footer__label" data-active="false">Уведомления</div>
+            </a>
+            <a href="student-personal-account.html" class="footer__item">
+                <img src="img/pfp.gif" class="footer__icon pfp" alt="Mage page">
+                <div class="footer__label" data-active="false">Профиль</div>
+            </a>
+        </nav>
+    </footer>
     
 </body>
 <script src="js/script.js"></script>
