@@ -78,15 +78,52 @@
     </aside>
 
     <div class="hero">
-        <div class="hero__container">
-            <div class="hero__layout hero__hello">
-                <img src="img/main_page_hello.svg" class="hero__img" alt="Hello">
-                <div>
-                    <div class="hero__title">С нами вы станете сильнее</div>
-                    <div class="hero__description">Каталог курсов программирования, которые помогут вам освоить основы программирования и получить первые навыки в этой области, а также прокачать продвинутые техники и методологии разработки.</div>
+        <div class="hero__container" style="margin-bottom: 87px;">
+            <h1 class="hero__title">Справка</h1>
+            
+            <div class="help__sections" style="display: flex; flex-direction: column; gap: 20px;">
+                <div class="hero__layout help__section">
+                    <h2 class="help__section-title">📌 Как начать обучение</h2>
+                    <ul class="help__list">
+                        <li><strong>Выбор курса:</strong> Перейдите в раздел <a href="student-courses.html" style="color: var(--main-bg-color);">«Курсы»</a>, отфильтруйте программы по тематике.</li>
+                        <li><strong>Оплата:</strong> Добавьте курс в корзину и следуйте инструкциям.</li>
+                        <li><strong>Доступ:</strong> После оплаты материалы появятся в <a href="student-page.html" style="color: var(--main-bg-color);">личном кабинете</a>.</li>
+                    </ul>
+                </div>
+
+                <div class="hero__layout help__section">
+                    <h2 class="help__section-title">🔧 Техническая поддержка</h2>
+                    <ul class="help__list">
+                        <li><strong>Проблемы с доступом:</strong> Очистите кеш браузера (Ctrl + F5).</li>
+                        <li><strong>Ошибки оплаты:</strong> Проверьте данные карты или <a href="#contact" style="color: var(--main-bg-color);">свяжитесь с нами</a>.</li>
+                    </ul>
+                </div>
+
+                <div class="hero__layout help__section">
+                    <h2 class="help__section-title">❓ Частые вопросы</h2>
+                    <div class="help__faq">
+                        <div class="help__faq-item">
+                            <h3>Можно ли вернуть деньги за курс?</h3>
+                            <p>Да, в течение 14 дней — напишите в поддержку с номером заказа.</p>
+                        </div>
+                        <div class="help__faq-item">
+                            <h3>Как получить сертификат?</h3>
+                            <p>После завершения курса он появится в разделе «Достижения».</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="hero__layout help__section" id="contact">
+                    <h2 class="help__section-title">📞 Контакты</h2>
+                    <div class="help__contacts">
+                        <p><img src="img/student_personal_page_email.svg" alt="" style="margin-right: 8px; vertical-align: middle;"> <a href="mailto:support@uchipro.ru" style="color: var(--main-bg-color);">support@uchipro.ru</a></p>
+                        <p><img src="img/student_personal_page_number.svg" alt="" style="margin-right: 8px; vertical-align: middle;"> <a href="tel:+78001234567" style="color: var(--main-bg-color);">8 (800) 123-45-67</a></p>
+                    </div>
+                    <button class="main__btn" style="background-color: var(--main-bg-color); color: #fff; margin-top: 16px; width: 100%; border: none;">
+                        Написать в поддержку
+                    </button>
                 </div>
             </div>
-            <div class="info__box">План на день <span class="date-number">8 января</span></div>
         </div>
     </div>
 
@@ -116,14 +153,5 @@
     </footer>
     
 </body>
-    <script>
-        function getcurrentDay() {
-            const date = new Date();
-            const day = date.getDate();
-            const month = date.toLocaleString('ru', {month: 'long'});
-            return `${day} ${month}`;
-        }
-        document.querySelector('.date-number').textContent = getcurrentDay();
-    </script>
 <script src="js/script.js"></script>
 </html>

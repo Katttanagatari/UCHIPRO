@@ -157,6 +157,8 @@ const postMethods = () => {
         });
     });
 
+    
+
     //@media запрос
     const moveRemoveButtons = () => {
         document.querySelectorAll('.hero__cart').forEach(cart => {
@@ -186,5 +188,51 @@ const postMethods = () => {
 
 document.addEventListener("DOMContentLoaded", () => {
     postMethods();
+
+    
+    const paymentBtn = document.querySelector(".payment__btn");
+
+    paymentBtn.addEventListener("click", () => {
+        const selectedCheckboxes = document.querySelectorAll(".hero__option-checkbox:checked");
+        if (selectedCheckboxes.length === 0) {
+            alert("Выберите хотя бы один вариант оплаты.");
+            return;
+        }
+
+       
+        const paymentMethod = document.querySelector(".payment__info .payment__text[data-active='true']").textContent;
+
+        
+        const purchasedItems = Array.from(selectedCheckboxes).map(checkbox => {
+            const itemId = checkbox.name.replace("payment-", "");
+            const course = cart.find(c => c.id == itemId);
+            return {
+                id: itemId,
+                name: course?.name || "Неизвестный курс",
+                selectedPrice: checkbox.value,
+                paymentMethod: paymentMethod
+            };
+        });
+
+        
+        const previousPurchases = JSON.parse(localStorage.getItem("purchases")) || [];
+        localStorage.setItem("purchases", JSON.stringify([...previousPurchases, ...purchasedItems]));
+
+        
+        localStorage.removeItem("cart");
+        cart = [];
+        postMethods();
+
+        alert("Оплата прошла успешно!");
+    });
+
+    
+    const paymentTexts = document.querySelectorAll(".payment__text");
+    paymentTexts.forEach(text => {
+        text.addEventListener("click", () => {
+            paymentTexts.forEach(t => t.removeAttribute("data-active"));
+            text.setAttribute("data-active", "true");
+        });
+    });
 });
 
