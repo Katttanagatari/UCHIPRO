@@ -141,6 +141,18 @@ const postMethods = () => {
     //remove from cart
     const removeCart = document.querySelectorAll('.hero__remove');
     const сountElement = document.getElementById('count-el');
+    const deleteEl = (event) => {
+        const id = parseInt(event.currentTarget.dataset.id);
+        cart = cart.filter(item => item.id !== id);
+        localStorage.setItem("cart", JSON.stringify(cart));
+        event.currentTarget.closest('.hero__cart').remove();
+        сountElement.textContent = `Курсы (${cart.length})`;
+
+        recalcTotalSum();
+        if (cart.length === 0) {
+            postMethods();
+        }
+    }
 
     removeCart.forEach(btn => {
         btn.addEventListener('click', (event) => {
@@ -188,43 +200,49 @@ const postMethods = () => {
 
 document.addEventListener("DOMContentLoaded", () => {
     postMethods();
+    // const paymentBtn = document.querySelector(".payment__btn");
 
+    // paymentBtn.addEventListener("click", () => {
+    //     const selectedCheckboxes = document.querySelectorAll(".hero__option-checkbox:checked");
     
-    const paymentBtn = document.querySelector(".payment__btn");
+    //     if (selectedCheckboxes.length === 0) {
+    //         alert("Пожалуйста, выберите хотя бы один курс для оплаты.");
+    //         return;
+    //     }
+    
+    //     const paymentMethod = document.querySelector(".payment__info .payment__text[data-active='true']").textContent;
+    
+    //     const selectedMap = {};
+    //     selectedCheckboxes.forEach(checkbox => {
+    //         const courseId = checkbox.name.replace("payment-", "");
+    //         if (!selectedMap[courseId]) selectedMap[courseId] = [];
+    //         selectedMap[courseId].push(checkbox);
+    //     });
+    
+    //     const purchasedItems = Object.entries(selectedMap).map(([courseId, checkboxes]) => {
+    //         const course = cart.find(c => c.id == courseId);
+    
+    //         // Сохраняем только один чекбокс — любой (например, первый)
+    //         const checkbox = checkboxes[0];
+    
+    //         return {
+    //             id: courseId,
+    //             name: course?.name || "Неизвестный курс",
+    //             selectedPrice: checkbox.value,
+    //             paymentMethod,
+    //             date: course?.date || new Date().toLocaleDateString('ru-RU')
+    //         };
+    //     });
+    
+    //     const previousPurchases = JSON.parse(localStorage.getItem("purchases")) || [];
+    //     localStorage.setItem("purchases", JSON.stringify([...previousPurchases, ...purchasedItems]));
+    
+    //     const paidIds = purchasedItems.map(p => p.id);
+    //     cart = cart.filter(c => !paidIds.includes(c.id));
+    //     localStorage.setItem("cart", JSON.stringify(cart));
 
-    paymentBtn.addEventListener("click", () => {
-        const selectedCheckboxes = document.querySelectorAll(".hero__option-checkbox:checked");
-        if (selectedCheckboxes.length === 0) {
-            alert("Выберите хотя бы один вариант оплаты.");
-            return;
-        }
-
-       
-        const paymentMethod = document.querySelector(".payment__info .payment__text[data-active='true']").textContent;
-
-        
-        const purchasedItems = Array.from(selectedCheckboxes).map(checkbox => {
-            const itemId = checkbox.name.replace("payment-", "");
-            const course = cart.find(c => c.id == itemId);
-            return {
-                id: itemId,
-                name: course?.name || "Неизвестный курс",
-                selectedPrice: checkbox.value,
-                paymentMethod: paymentMethod
-            };
-        });
-
-        
-        const previousPurchases = JSON.parse(localStorage.getItem("purchases")) || [];
-        localStorage.setItem("purchases", JSON.stringify([...previousPurchases, ...purchasedItems]));
-
-        
-        localStorage.removeItem("cart");
-        cart = [];
-        postMethods();
-
-        alert("Оплата прошла успешно!");
-    });
+    //     alert("Оплата прошла успешно!");
+    // });
 
     
     const paymentTexts = document.querySelectorAll(".payment__text");
