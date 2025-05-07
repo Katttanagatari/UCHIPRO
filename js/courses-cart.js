@@ -181,12 +181,12 @@ const postMethods = () => {
           if (!removeBtn || !tagBlock || !flexBlock) return;
       
           if (window.innerWidth <= 740) {
-            // Переносим в flexBlock, если он там ещё не находится
+            
             if (removeBtn.parentElement !== flexBlock) {
               flexBlock.appendChild(removeBtn);
             }
           } else {
-            // Переносим обратно в tagBlock, если он там ещё не находится
+            
             if (removeBtn.parentElement !== tagBlock) {
               tagBlock.appendChild(removeBtn);
             }

@@ -37,7 +37,7 @@
             </div>
             <div class="header__avatar">
                 <a href="student-personal-account.html">
-                    <img src="img/Avatar.png" alt="Avatar">
+                    <img src="img/Avatar.png" alt="Avatar"  id="mainAvatar">
                 </a>
             </div>
         </div>
@@ -91,7 +91,7 @@
             <div class="hero__content">
 
                 <div class="hero__layout hero__cards--small">
-                    <img src="img/pfp.gif" alt="pfp" class="hero__card-pfp">
+                    <img src="img/pfp.gif" alt="pfp" class="hero__card-pfp" id="avatarImage">
                     <div class="">
                         <div class="hero__card-title">Ирина Козина</div>
                         <div class="hero__card-name--spaced">
@@ -109,23 +109,53 @@
                     <div class="hero__layout hero__cards--large">
                         <div class="hero__card-info">
                             <div class="hero__card-text" style="font-size: 20px;">Личная информация</div>
-                            <img src="img/student_personal_page_change.svg" alt="change">
+                            <img src="img/student_personal_page_change.svg" alt="change" id="changeButton">
                         </div>
                         <div class="hero__card-info mt26">
                             <div style="color: #C7C7CC;">Имя</div>
-                            <div>Ирина</div>
+                            <div id="name">Ирина</div>
                         </div>
                         <div class="hero__card-info mt12">
                             <div style="color: #C7C7CC;">Фамилия</div>
-                            <div>Спокойнич</div>
+                            <div id="surname">Спокойнич</div>
                         </div>
                         <div class="hero__card-info mt12">
                             <div style="color: #C7C7CC;">Дата рождения</div>
-                            <div>08.12.25</div>
+                            <div id="dob">08.12.25</div>
                         </div>
                         <div class="hero__card-info mt12">
                             <div style="color: #C7C7CC;">Пол</div>
-                            <div>Женский</div>
+                            <div id="gender">Женский</div>
+                        </div>
+                    </div>
+                    
+                    <div id="editForm" class="popup" style="display: none;">
+                        <div class="popup__content">
+                            <div class="popup__header">
+                                <h3>Редактировать информацию</h3>
+                                <span class="popup__close">&times;</span>
+                            </div>
+                            <form id="personalInfoForm">
+                                <label for="editName">Имя:</label>
+                                <input type="text" id="editName" value="Ирина"><br>
+                    
+                                <label for="editSurname">Фамилия:</label>
+                                <input type="text" id="editSurname" value="Спокойнич"><br>
+                    
+                                <label for="editDob">Дата рождения:</label>
+                                <input type="text" id="editDob" value="08.12.25"><br>
+                    
+                                <label for="editGender">Пол:</label>
+                                <select id="editGender">
+                                    <option value="Женский">Женский</option>
+                                    <option value="Мужской">Мужской</option>
+                                </select><br>
+                    
+                                <label for="editAvatar">Изменить аватар:</label>
+                                <input type="file" id="editAvatar" accept="image/*"><br>
+                    
+                                <button type="submit" class="popup__text">Сохранить</button>
+                            </form>
                         </div>
                     </div>
                     <div class="hero__layout hero__cards--large mt24">
@@ -210,4 +240,5 @@
     
 </body>
 <script src="js/script.js"></script>
+<script src="js/student-personal-acc.js"></script>
 </html>
